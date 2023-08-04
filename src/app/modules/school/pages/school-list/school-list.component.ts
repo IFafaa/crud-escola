@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-escola-list',
-  templateUrl: './escola-list.component.html',
-  styleUrls: ['./escola-list.component.scss']
+  selector: 'app-school-list',
+  templateUrl: './school-list.component.html',
+  styleUrls: ['./school-list.component.scss']
 })
-export class EscolaListComponent {
+export class SchoolListComponent {
 
   constructor(
     private _router: Router

@@ -1,0 +1,42 @@
+<div>
+  <div class="mb-3">Dados gerais</div>
+  <div class="row">
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Tipo de instituição</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let type of typeSchools" [value]="type.id">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Tipos de ensino</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let type of typeTeaching" [value]="type.id">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Turnos de funcionamento</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let type of typeOpeningHours" [value]="type.id">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>
