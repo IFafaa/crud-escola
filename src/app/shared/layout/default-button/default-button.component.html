@@ -1,0 +1,14 @@
+<button
+  class="btn {{class}}"
+  [ngClass]="{
+  'btn--primary': type == 'primary',
+  'btn--secondary': type == 'secondary',
+  'btn--cancel': type == 'cancel'
+  }"
+  [disabled]="disabled"
+  >
+  {{value}}
+  <span *ngIf="icon" class="material-symbols-outlined">
+    {{icon}}
+  </span>
+</button>
