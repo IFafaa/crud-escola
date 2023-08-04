@@ -1,0 +1,40 @@
+{
+  "schools": [
+    {
+      "id": 0,
+      "name": "Escola estadual frei egidio",
+      "cnpj": "3280438943",
+      "typeInstitution": 1,
+      "typeTeaching": [1],
+      "typeOpeningHours": [1],
+      "directorName": "Pedro",
+      "location": {
+        "cep": "01001-000",
+        "street": "Praça da Sé",
+        "complement": "lado ímpar",
+        "neighborhood": "Sé",
+        "city": "São Paulo",
+        "state": "SP"
+      }
+    }
+  ],
+  "classes": [
+    {
+      "id": 0,
+      "idSchool": 0,
+      "nameClass": "C",
+      "series": "2º",
+      "idTypeTeaching": 1,
+      "idTypeOpeningHours": 1
+    }
+  ],
+  "students": [
+    {
+      "id": 0,
+      "idClass": 0,
+      "idSchool": 0,
+      "name": "Fabrício",
+      "age": 14
+    }
+  ]
+}
