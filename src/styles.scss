@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import 'ngx-toastr/toastr';
+@import './app/shared/scss/spinner.scss';
+@import './app/shared/scss/default.scss';
+
+* {
+  padding:  0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;}
+
+:root{
+  --red: #dc3545;
+  --red-dark: #b62b39;
+  --green: #28a745;
+  --yellow: #ffc107;
+  --gray: rgb(233, 233, 233);
+  --dark-gray: rgb(184, 184, 184);
+  --black: black;
+  --white: white;
+
+  --secondary-very-light: #7cbbb833;
+  --secondary: #3FBEB8;
+  --secondary-dark: #3aa39e;
+  --primary-dark: #6439AA;
+  --primary: #8D64CB;
+  --yellow: #D4E0A1;
+}
+
+html, body { height: 100%; }
