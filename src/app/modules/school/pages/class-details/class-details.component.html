@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="mx-auto">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h4>Detalhe classe</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="card-default p-3">
+          <app-class-details-form
+          *ngIf="school && class"
+          [school]="school"
+          [form]="classForm"></app-class-details-form>
+        </div>
+      </div>
+      <div class="col-12 mb-3" *ngIf="isEditMode">
+        <div class="d-flex justify-content-end">
+          <default-button value="Salvar" icon="add" type="secondary" (clickEvent)="saveClass()" [disabled]="!classForm.dirty || classForm.invalid"></default-button>
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <div>
+          <!-- <app-school-details-classes
+            *ngIf="classes && students && school"
+            [school]="school"
+            [isEditMode]="isEditMode"
+            [isReadOnlyMode]="isReadOnlyMode"
+            (changeClassCallback)="getStudents();getClasses()"
+          ></app-school-details-classes> -->
+        </div>
+      </div>
+      <div class="col-12 mb-3" >
+        <div class="d-flex">
+          <default-button value="Voltar" icon="arrow_back" (clickEvent)="back()"></default-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

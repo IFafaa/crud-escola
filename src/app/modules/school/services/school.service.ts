@@ -52,8 +52,8 @@ export class SchoolService {
     return this.http.delete<ISchool>(environment.apiUrl + 'schools/' + id);
   }
 
-  editSchool(id: number, school: ISchool): Observable<ISchool>{
-    return this.http.put<ISchool>(environment.apiUrl + 'schools/' + id, school)
+  editSchool(id: number, school: ISchool): Observable<ISchool> {
+    return this.http.put<ISchool>(environment.apiUrl + 'schools/' + id, school);
   }
 
   getClasses(idSchool: number): Observable<IClass[]> {
@@ -66,8 +66,16 @@ export class SchoolService {
     return this.http.post<IClass>(environment.apiUrl + 'classes', _class);
   }
 
-  deleteClass(id: number): Observable<IClass>{
-    return this.http.delete<IClass>(environment.apiUrl + 'classes/' + id)
+  deleteClass(id: number): Observable<IClass> {
+    return this.http.delete<IClass>(environment.apiUrl + 'classes/' + id);
+  }
+
+  getClassById(id: number): Observable<IClass> {
+    return this.http
+      .get<IClass[]>(environment.apiUrl + 'classes', {
+        params: { id: id },
+      })
+      .pipe(map((classes) => classes[0]));
   }
 
   getStudents(idSchool: number): Observable<IStudent[]> {

@@ -63,6 +63,14 @@
       "typeOpeningHours": 0,
       "idSchool": 2,
       "id": 2
+    },
+    {
+      "typeTeaching": 1,
+      "series": 4,
+      "name": "A",
+      "typeOpeningHours": 1,
+      "idSchool": 1,
+      "id": 3
     }
   ],
   "students": [

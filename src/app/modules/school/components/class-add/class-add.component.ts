@@ -71,7 +71,7 @@ export class ClassAddComponent implements OnInit {
     });
   }
 
-  selectTeachingChange(event: any) {
+  selectTeachingChange() {
     this.form.get('series')?.disable();
     let control = this.form.get('typeTeaching');
     if (control?.value !== null) {

@@ -16,6 +16,8 @@ import { SchoolDetailsCapacityComponent } from './components/school-details-capa
 import { SchoolDetailsClassesComponent } from './components/school-details-classes/school-details-classes.component';
 import { Formatters } from 'src/app/core/helpers/formatters';
 import { ClassAddComponent } from './components/class-add/class-add.component';
+import { ClassDetailsComponent } from './pages/class-details/class-details.component';
+import { ClassDetailsFormComponent } from './components/class-details-form/class-details-form.component';
 
 const routes: Routes = [
   {
@@ -26,11 +28,25 @@ const routes: Routes = [
     path: ':id/:method',
     component: SchoolDetailsComponent,
   },
-
+  {
+    path: 'classe/:id/:classId/:classMethod',
+    component: ClassDetailsComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [SchoolListComponent, SchoolAddComponent, SchoolDetailsComponent, SchoolDetailsFormComponent, SchoolDetailsAddressComponent, SchoolDetailsCapacityComponent, SchoolDetailsClassesComponent, ClassAddComponent],
+  declarations: [
+    SchoolListComponent,
+    SchoolAddComponent,
+    SchoolDetailsComponent,
+    SchoolDetailsFormComponent,
+    SchoolDetailsAddressComponent,
+    SchoolDetailsCapacityComponent,
+    SchoolDetailsClassesComponent,
+    ClassAddComponent,
+    ClassDetailsComponent,
+    ClassDetailsFormComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -42,8 +58,6 @@ const routes: Routes = [
     FormsModule,
     NgxMaskModule.forChild(),
   ],
-  providers: [
-    Formatters
-  ]
+  providers: [Formatters],
 })
 export class SchoolModule {}

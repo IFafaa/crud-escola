@@ -11,6 +11,8 @@ import { ENUM_SERIES_TYPE } from 'src/app/shared/enums/series.type.enum';
 import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
 import { finalize } from 'rxjs';
 import { ToastrService } from 'src/app/core/services/toastr.service';
+import { Router } from '@angular/router';
+import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
 
 @Component({
   selector: 'app-school-details-classes',
@@ -19,9 +21,10 @@ import { ToastrService } from 'src/app/core/services/toastr.service';
 })
 export class SchoolDetailsClassesComponent implements OnInit {
   @Input() school!: ISchool;
-  @Input() isReadOnlyMode!: boolean
-  @Input() isEditMode!: boolean
-  @Output() changeClassCallback: EventEmitter<null> = new EventEmitter()
+  @Input() isReadOnlyMode!: boolean;
+  @Input() isEditMode!: boolean;
+  @Input() mode!: ENUM_MODE_TYPE
+  @Output() changeClassCallback: EventEmitter<null> = new EventEmitter();
 
   classes: IClass[] = [];
   ENUM_STATUS_LIST = ENUM_STATUS_LIST;
@@ -31,7 +34,8 @@ export class SchoolDetailsClassesComponent implements OnInit {
     private readonly _schoolService: SchoolService,
     private readonly _matDialog: MatDialog,
     private readonly _confirmDialog: ConfirmDialogService,
-    private readonly _toastr: ToastrService
+    private readonly _toastr: ToastrService,
+    private readonly _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,19 +44,20 @@ export class SchoolDetailsClassesComponent implements OnInit {
 
   getClasses(): void {
     this.statusList = ENUM_STATUS_LIST.IDLE;
-    this._schoolService.getClasses(this.school.id)
-    .pipe(finalize(() => this.changeClassCallback.emit()))
-    .subscribe({
-      next: (res) => {
-        this.classes = res;
-        if (!this.classes.length) {
-          this.statusList = ENUM_STATUS_LIST.NOTFOUND;
-        }
-      },
-      error: () => {
-        this.statusList = ENUM_STATUS_LIST.ERROR;
-      },
-    });
+    this._schoolService
+      .getClasses(this.school.id)
+      .pipe(finalize(() => this.changeClassCallback.emit()))
+      .subscribe({
+        next: (res) => {
+          this.classes = res;
+          if (!this.classes.length) {
+            this.statusList = ENUM_STATUS_LIST.NOTFOUND;
+          }
+        },
+        error: () => {
+          this.statusList = ENUM_STATUS_LIST.ERROR;
+        },
+      });
   }
 
   formatTypeTeaching(idTypeTeaching: number): string {
@@ -85,8 +90,14 @@ export class SchoolDetailsClassesComponent implements OnInit {
         this.getClasses();
       });
   }
-  viewClass(id: number): void {}
-  editClass(id: number): void {}
+  viewClass(id: number): void {
+    this._router.navigate(['/escolas/classe',this.school.id, id, ENUM_MODE_TYPE.VIEW])
+  }
+
+  editClass(id: number): void {
+    this._router.navigate(['/escolas/classe',this.school.id, id, ENUM_MODE_TYPE.EDIT])
+  }
+
   deleteClass(id: number): void {
     const titleDialog = 'Deletar Classe';
     const descDialog = 'Você realmente deseja deletar essa classe?';
@@ -96,7 +107,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
         .pipe(finalize(() => this.getClasses()))
         .subscribe({
           next: (res) => {
-            this._toastr.success("Classe deletada com sucesso!")
+            this._toastr.success('Classe deletada com sucesso!');
           },
         });
     });

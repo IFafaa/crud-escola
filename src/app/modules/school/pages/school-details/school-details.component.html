@@ -46,6 +46,7 @@
           <app-school-details-classes
             *ngIf="classes && students && school"
             [school]="school"
+            [mode]="mode"
             [isEditMode]="isEditMode"
             [isReadOnlyMode]="isReadOnlyMode"
             (changeClassCallback)="getStudents();getClasses()"
