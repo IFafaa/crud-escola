@@ -1,5 +1,4 @@
-export enum ENUM_TYPE_SCHOOL {
-  PRIVADA = 0,
+export enum ENUM_SCHOOL_TYPE {
+  ESTADUAL = 0,
   MUNICIPAL = 1,
-  ESTADUAL = 2,
 }

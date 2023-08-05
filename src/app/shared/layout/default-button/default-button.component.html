@@ -6,6 +6,7 @@
   'btn--cancel': type == 'cancel'
   }"
   [disabled]="disabled"
+  (click)="clickEvent.emit()"
   >
   {{value}}
   <span *ngIf="icon" class="material-symbols-outlined">

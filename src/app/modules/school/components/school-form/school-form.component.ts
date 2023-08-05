@@ -11,7 +11,10 @@ export class SchoolFormComponent implements OnInit {
   typeSchools: ISelect[] = [];
   typeTeaching: ISelect[] = [];
   typeOpeningHours: ISelect[] = [];
-  constructor(private _schoolService: SchoolService) {}
+
+  constructor(
+    private _schoolService: SchoolService
+    ) {}
 
   ngOnInit(): void {
     this.getTypeSchool();
@@ -35,12 +38,11 @@ export class SchoolFormComponent implements OnInit {
     });
   }
 
-  getTypeOpeningHours(): void{
-    this._schoolService.typeOpeningHours().subscribe({
+  getTypeOpeningHours(): void {
+    this._schoolService.typeTeaching().subscribe({
       next: (res) => {
         this.typeOpeningHours = res;
       },
     });
   }
-
 }

@@ -5,17 +5,158 @@
       "name": "Escola estadual frei egidio",
       "cnpj": "3280438943",
       "typeInstitution": 1,
-      "typeTeaching": [1],
-      "typeOpeningHours": [1],
+      "typeTeaching": [
+        1
+      ],
+      "typeOpeningHours": [
+        1
+      ],
       "directorName": "Pedro",
       "location": {
         "cep": "01001-000",
         "street": "Praça da Sé",
-        "complement": "lado ímpar",
+        "number": "lado ímpar",
         "neighborhood": "Sé",
         "city": "São Paulo",
         "state": "SP"
       }
+    },
+    {
+      "name": "testeeee",
+      "typeSchool": 0,
+      "typeTeaching": [
+        0,
+        3,
+        4,
+        5
+      ],
+      "typeOpeningHours": [
+        0,
+        0
+      ],
+      "cnpj": "32453543534534",
+      "directorName": "tesrasf asdf",
+      "location": {
+        "cep": "38407744",
+        "street": "Rua Providence",
+        "number": "244",
+        "neighborhood": "Novo Mundo",
+        "city": "Uberlândia",
+        "state": "MG"
+      },
+      "id": 1
+    },
+    {
+      "name": null,
+      "typeSchool": null,
+      "typeTeaching": null,
+      "typeOpeningHours": null,
+      "cnpj": null,
+      "directorName": null,
+      "location": {
+        "cep": null,
+        "street": null,
+        "neighborhood": null,
+        "city": null,
+        "state": null
+      },
+      "id": 2
+    },
+    {
+      "name": null,
+      "typeSchool": null,
+      "typeTeaching": null,
+      "typeOpeningHours": null,
+      "cnpj": null,
+      "directorName": null,
+      "location": {
+        "cep": null,
+        "street": null,
+        "neighborhood": null,
+        "city": null,
+        "state": null
+      },
+      "id": 3
+    },
+    {
+      "name": null,
+      "typeSchool": null,
+      "typeTeaching": null,
+      "typeOpeningHours": null,
+      "cnpj": null,
+      "directorName": null,
+      "location": {
+        "cep": null,
+        "street": null,
+        "neighborhood": null,
+        "city": null,
+        "state": null
+      },
+      "id": 4
+    },
+    {
+      "name": null,
+      "typeSchool": null,
+      "typeTeaching": null,
+      "typeOpeningHours": null,
+      "cnpj": null,
+      "directorName": null,
+      "location": {
+        "cep": null,
+        "street": null,
+        "neighborhood": null,
+        "city": null,
+        "state": null
+      },
+      "id": 5
+    },
+    {
+      "name": null,
+      "typeSchool": null,
+      "typeTeaching": null,
+      "typeOpeningHours": null,
+      "cnpj": null,
+      "directorName": null,
+      "location": {
+        "cep": null,
+        "street": null,
+        "neighborhood": null,
+        "city": null,
+        "state": null
+      },
+      "id": 6
+    },
+    {
+      "name": null,
+      "typeSchool": null,
+      "typeTeaching": null,
+      "typeOpeningHours": null,
+      "cnpj": null,
+      "directorName": null,
+      "location": {
+        "cep": null,
+        "street": null,
+        "neighborhood": null,
+        "city": null,
+        "state": null
+      },
+      "id": 7
+    },
+    {
+      "name": null,
+      "typeSchool": null,
+      "typeTeaching": null,
+      "typeOpeningHours": null,
+      "cnpj": null,
+      "directorName": null,
+      "location": {
+        "cep": null,
+        "street": null,
+        "neighborhood": null,
+        "city": null,
+        "state": null
+      },
+      "id": 8
     }
   ],
   "classes": [

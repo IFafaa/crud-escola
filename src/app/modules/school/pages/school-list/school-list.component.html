@@ -1,19 +1,31 @@
 <div class="container mt-5">
   <div class="mx-auto">
-    <div class="d-flex justify-content-end align-items-center">
-      <div class="d-flex">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h4>Escolas</h4>
+      </div>
+      <div class="d-flex gap-2">
         <div>
           <default-button
-            value="Cadastrar escola"
+            value=""
+            icon="search"
             type="secondary"
-            (click)="registerSchool()"
+            (clickEvent)="addFilters()"
+          ></default-button>
+        </div>
+        <div>
+          <default-button
+            value=""
+            icon="add"
+            type="primary"
+            (clickEvent)="registerSchool()"
           ></default-button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card-default mx-auto mt-3">
+  <div class="card-default mx-auto mt-2">
     <div class="table-container">
       <table>
         <thead>

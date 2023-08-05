@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'default-button',
@@ -11,4 +11,6 @@ export class DefaultButtonComponent {
   @Input() disabled: boolean = false;
   @Input() icon: string = ''
   @Input() class: string = ''
+
+  @Output() clickEvent: EventEmitter<null> = new EventEmitter()
 }
