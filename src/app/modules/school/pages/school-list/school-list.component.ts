@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { SchoolAddComponent } from '../../components/school-add/school-add.component';
 import { ISchool } from '../../models/school.model';
 import { ENUM_SCHOOL_TYPE } from 'src/app/shared/enums/school-type.enum';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
 import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
@@ -24,13 +24,14 @@ export class SchoolListComponent implements OnInit {
   statusList: ENUM_STATUS_LIST = ENUM_STATUS_LIST.IDLE;
 
   showFilter: boolean = false;
-  filter: FormControl = new FormControl(null);
+
   constructor(
     private readonly _router: Router,
     private readonly _matDialog: MatDialog,
     private readonly _schoolService: SchoolService,
     private readonly _confirmDialog: ConfirmDialogService,
-    private readonly _toastr: ToastrService
+    private readonly _toastr: ToastrService,
+    private readonly _fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -55,13 +56,9 @@ export class SchoolListComponent implements OnInit {
       });
   }
 
-  addFilters(): void {
-    this.showFilter = !this.showFilter;
-  }
-
-  getSchools(): void {
+  getSchools(filters: ISchool | null = null): void {
     this.statusList = ENUM_STATUS_LIST.IDLE;
-    this._schoolService.getSchools().subscribe({
+    this._schoolService.getSchools(filters).subscribe({
       next: (res) => {
         this.schools = res;
         if (!this.schools.length) {

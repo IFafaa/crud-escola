@@ -24,8 +24,10 @@ export class SchoolDetailsClassesComponent implements OnInit {
   @Input() school!: ISchool;
   @Input() isReadOnlyMode!: boolean;
   @Input() isEditMode!: boolean;
-  @Input() mode!: ENUM_MODE_TYPE
+  @Input() mode!: ENUM_MODE_TYPE;
   @Output() changeClassCallback: EventEmitter<null> = new EventEmitter();
+
+  showFilter: boolean = false;
 
   classes: IClass[] = [];
   ENUM_STATUS_LIST = ENUM_STATUS_LIST;
@@ -44,10 +46,10 @@ export class SchoolDetailsClassesComponent implements OnInit {
     this.getClasses();
   }
 
-  getClasses(): void {
+  getClasses(filters: IClass | {} = {}): void {
     this.statusList = ENUM_STATUS_LIST.IDLE;
     this._classesService
-      .getClasses(this.school.id)
+      .getClasses(this.school.id, filters)
       .pipe(finalize(() => this.changeClassCallback.emit()))
       .subscribe({
         next: (res) => {
@@ -93,11 +95,21 @@ export class SchoolDetailsClassesComponent implements OnInit {
       });
   }
   viewClass(id: number): void {
-    this._router.navigate(['/escolas/classe',this.school.id, id, ENUM_MODE_TYPE.VIEW])
+    this._router.navigate([
+      '/escolas/classe',
+      this.school.id,
+      id,
+      ENUM_MODE_TYPE.VIEW,
+    ]);
   }
 
   editClass(id: number): void {
-    this._router.navigate(['/escolas/classe',this.school.id, id, ENUM_MODE_TYPE.EDIT])
+    this._router.navigate([
+      '/escolas/classe',
+      this.school.id,
+      id,
+      ENUM_MODE_TYPE.EDIT,
+    ]);
   }
 
   deleteClass(id: number): void {

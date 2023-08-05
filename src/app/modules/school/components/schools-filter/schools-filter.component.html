@@ -1,0 +1,30 @@
+<div class="row" [formGroup]="form">
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Tipo de instituição</mat-label>
+      <mat-select formControlName="typeInstitution">
+        <mat-option [value]="null">--</mat-option>
+        <mat-option *ngFor="let type of typeInstitution" [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Nome do Diretor</mat-label>
+      <input matInput formControlName="directorName" />
+    </mat-form-field>
+  </div>
+  <div class="col-12">
+    <div class="d-flex justify-content-end">
+      <default-button value="Buscar" icon="search" (clickEvent)="search()"></default-button>
+    </div>
+  </div>
+</div>

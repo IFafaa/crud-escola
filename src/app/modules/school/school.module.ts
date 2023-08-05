@@ -20,6 +20,9 @@ import { ClassDetailsComponent } from './pages/class-details/class-details.compo
 import { ClassDetailsFormComponent } from './components/class-details-form/class-details-form.component';
 import { ClassDetailsStudentsComponent } from './components/class-details-students/class-details-students.component';
 import { StudentFormComponent } from './components/student-form/student-form.component';
+import { SchoolsFilterComponent } from './components/schools-filter/schools-filter.component';
+import { Filters } from 'src/app/core/helpers/filters';
+import { ClassFilterComponent } from './components/class-filter/class-filter.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,8 @@ const routes: Routes = [
     ClassDetailsFormComponent,
     ClassDetailsStudentsComponent,
     StudentFormComponent,
+    SchoolsFilterComponent,
+    ClassFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +67,6 @@ const routes: Routes = [
     FormsModule,
     NgxMaskModule.forChild(),
   ],
-  providers: [Formatters],
+  providers: [Formatters, Filters],
 })
 export class SchoolModule {}

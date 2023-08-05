@@ -5,22 +5,22 @@ import { environment } from 'src/environment/environment';
 import { IClass } from '../models/class.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClassesService {
+  constructor(private readonly http: HttpClient) {}
 
-  constructor(
-    private readonly http: HttpClient
-  ) { }
-
-  getClasses(idSchool: number): Observable<IClass[]> {
+  getClasses(
+    idSchool: number,
+    filters: IClass | {} = {}
+  ): Observable<IClass[]> {
     return this.http.get<IClass[]>(environment.apiUrl + 'classes', {
-      params: { idSchool: idSchool },
+      params: { ...filters, idSchool: idSchool },
     });
   }
 
-  editClass(id: number, _class:IClass): Observable<IClass>{
-    return this.http.put<IClass>(environment.apiUrl + 'classes/' + id, _class)
+  editClass(id: number, _class: IClass): Observable<IClass> {
+    return this.http.put<IClass>(environment.apiUrl + 'classes/' + id, _class);
   }
 
   createClass(_class: IClass): Observable<IClass> {

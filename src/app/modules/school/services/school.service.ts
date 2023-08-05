@@ -28,8 +28,12 @@ export class SchoolService {
 
   //---------------------------------------------------------------------------------------------------------------------
 
-  getSchools(): Observable<ISchool[]> {
-    return this.http.get<ISchool[]>(environment.apiUrl + 'schools');
+  getSchools(filters: any): Observable<ISchool[]> {
+    console.log(filters);
+
+    return this.http.get<ISchool[]>(environment.apiUrl + 'schools', {
+      params: filters
+    });
   }
 
   getSchoolById(id: number): Observable<ISchool> {
