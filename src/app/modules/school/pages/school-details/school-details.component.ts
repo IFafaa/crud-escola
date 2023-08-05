@@ -9,6 +9,8 @@ import { IClass } from '../../models/class.model';
 import { IStudent } from '../../models/students.model';
 import { ToastrService } from 'src/app/core/services/toastr.service';
 import { cpfCnpjValidator } from 'src/app/shared/validators/cpfCnpj.validator';
+import { StudentService } from '../../services/student.service';
+import { ClassesService } from '../../services/classes.service';
 
 @Component({
   selector: 'app-school-details',
@@ -32,6 +34,8 @@ export class SchoolDetailsComponent implements OnInit {
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
     private readonly _schoolService: SchoolService,
+    private readonly _studentService: StudentService,
+    private readonly _classesService: ClassesService,
     private readonly _fb: FormBuilder,
     private readonly _toastr: ToastrService
   ) {
@@ -119,7 +123,7 @@ export class SchoolDetailsComponent implements OnInit {
   }
 
   getClasses(): void {
-    this._schoolService.getClasses(this.school.id).subscribe({
+    this._classesService.getClasses(this.school.id).subscribe({
       next: (res) => {
         this.classes = res;
         this.qntForm.get("classes")?.setValue(this.classes.length)
@@ -128,7 +132,7 @@ export class SchoolDetailsComponent implements OnInit {
   }
 
   getStudents(): void {
-    this._schoolService.getStudents(this.school.id).subscribe({
+    this._studentService.getStudents(this.school.id).subscribe({
       next: (res) => {
         this.students = res;
         this.qntForm.get("students")?.setValue(this.students.length)

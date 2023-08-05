@@ -4,7 +4,6 @@
       "name": "Escola Estadual Frei Egídio Parisi",
       "typeInstitution": 0,
       "typeTeaching": [
-        1,
         2,
         3
       ],
@@ -13,64 +12,27 @@
         1,
         2
       ],
-      "cnpj": "12938812389128",
-      "directorName": "Washington Ferreira Souza",
+      "cnpj": "00042004000132",
+      "directorName": "Washington Ferreira Silvano",
       "location": {
-        "cep": "38407744",
-        "street": "Rua Providence",
-        "number": "324",
-        "neighborhood": "Novo Mundo",
-        "city": "Uberlândia",
-        "state": "MG"
+        "cep": "24430200",
+        "street": "Rua Belo Horizonte",
+        "number": "244",
+        "neighborhood": "Porto da Madama",
+        "city": "São Gonçalo",
+        "state": "RJ"
       },
       "id": 1
-    },
-    {
-      "name": "testeeeeeeeee",
-      "typeInstitution": 0,
-      "typeTeaching": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "typeOpeningHours": [
-        0,
-        1
-      ],
-      "cnpj": "21123123123213",
-      "directorName": "teste teste",
-      "location": {
-        "cep": "38400066",
-        "number": "24442"
-      },
-      "id": 2
     }
   ],
   "classes": [
     {
-      "id": 1,
-      "idSchool": 0,
-      "name": "C",
-      "series": "2º",
-      "typeTeaching": 1,
-      "typeOpeningHours": 1
-    },
-    {
-      "typeTeaching": 0,
-      "series": 1,
+      "typeTeaching": 2,
+      "series": 9,
       "name": "A",
       "typeOpeningHours": 0,
-      "idSchool": 2,
-      "id": 2
-    },
-    {
-      "typeTeaching": 1,
-      "series": 4,
-      "name": "A",
-      "typeOpeningHours": 1,
       "idSchool": 1,
-      "id": 3
+      "id": 1
     }
   ],
   "students": [

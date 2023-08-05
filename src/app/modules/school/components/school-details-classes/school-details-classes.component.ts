@@ -13,6 +13,7 @@ import { finalize } from 'rxjs';
 import { ToastrService } from 'src/app/core/services/toastr.service';
 import { Router } from '@angular/router';
 import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
+import { ClassesService } from '../../services/classes.service';
 
 @Component({
   selector: 'app-school-details-classes',
@@ -32,6 +33,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
 
   constructor(
     private readonly _schoolService: SchoolService,
+    private readonly _classesService: ClassesService,
     private readonly _matDialog: MatDialog,
     private readonly _confirmDialog: ConfirmDialogService,
     private readonly _toastr: ToastrService,
@@ -44,7 +46,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
 
   getClasses(): void {
     this.statusList = ENUM_STATUS_LIST.IDLE;
-    this._schoolService
+    this._classesService
       .getClasses(this.school.id)
       .pipe(finalize(() => this.changeClassCallback.emit()))
       .subscribe({
@@ -102,7 +104,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
     const titleDialog = 'Deletar Classe';
     const descDialog = 'Você realmente deseja deletar essa classe?';
     this._confirmDialog.confirm(titleDialog, descDialog, () => {
-      this._schoolService
+      this._classesService
         .deleteClass(id)
         .pipe(finalize(() => this.getClasses()))
         .subscribe({

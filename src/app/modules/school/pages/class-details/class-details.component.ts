@@ -8,6 +8,7 @@ import { IStudent } from '../../models/students.model';
 import { SchoolService } from '../../services/school.service';
 import { IClass } from '../../models/class.model';
 import { finalize } from 'rxjs';
+import { ClassesService } from '../../services/classes.service';
 
 @Component({
   selector: 'app-class-details',
@@ -32,6 +33,7 @@ export class ClassDetailsComponent implements OnInit {
     private readonly _route: ActivatedRoute,
     private readonly _router: Router,
     private readonly _schoolService: SchoolService,
+    private readonly _classesService: ClassesService,
     private readonly _fb: FormBuilder
   ) {
     this.mode = <ENUM_MODE_TYPE>(
@@ -72,7 +74,7 @@ export class ClassDetailsComponent implements OnInit {
   }
 
   getClass(): void {
-    this._schoolService
+    this._classesService
       .getClassById(this.classId)
       .pipe(
         finalize(() => {

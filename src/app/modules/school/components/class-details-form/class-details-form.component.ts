@@ -6,6 +6,7 @@ import { ISchool } from '../../models/school.model';
 import { ISelect } from '../../models/select.model';
 import { ISerie } from '../../models/serie.model';
 import { SchoolService } from '../../services/school.service';
+import { SeriesService } from '../../services/series.service';
 
 @Component({
   selector: 'app-class-details-form',
@@ -21,6 +22,7 @@ export class ClassDetailsFormComponent implements OnInit {
 
   constructor(
     private readonly _schoolService: SchoolService,
+    private readonly _seriesService: SeriesService,
     private readonly _fb: FormBuilder,
     private readonly _toastr: ToastrService
   ) {}
@@ -59,7 +61,7 @@ export class ClassDetailsFormComponent implements OnInit {
   getSeries(): void {
     let control = this.form.get('typeTeaching');
     if (control?.value !== null) {
-      this._schoolService.getSeries(control?.value).subscribe({
+      this._seriesService.getSeries(control?.value).subscribe({
         next: (res) => {
           this.series = res;
         },
@@ -67,18 +69,4 @@ export class ClassDetailsFormComponent implements OnInit {
     }
   }
 
-  create(): void {
-    const payload: IClass = {
-      ...this.form.value,
-      idSchool: this.school.id,
-    };
-    this._schoolService.createClass(payload).subscribe({
-      next: (res) => {
-        this._toastr.success('Classe cadastrada com sucesso!');
-      },
-      error: () => {
-        this._toastr.error('Houve um problema, tente novamente ou mais tarde');
-      },
-    });
-  }
 }

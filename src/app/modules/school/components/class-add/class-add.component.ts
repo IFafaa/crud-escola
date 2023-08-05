@@ -1,14 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
-import { CepService } from 'src/app/core/services/cep.service';
 import { ISelect } from '../../models/select.model';
 import { SchoolService } from '../../services/school.service';
-import { SchoolAddComponent } from '../school-add/school-add.component';
 import { ISchool } from '../../models/school.model';
 import { ISerie } from '../../models/serie.model';
 import { IClass } from '../../models/class.model';
+import { ToastrService } from 'src/app/core/services/toastr.service';
+import { ClassesService } from '../../services/classes.service';
+import { SeriesService } from '../../services/series.service';
 
 @Component({
   selector: 'app-class-add',
@@ -24,6 +24,8 @@ export class ClassAddComponent implements OnInit {
 
   constructor(
     private readonly _schoolService: SchoolService,
+    private readonly _classesService: ClassesService,
+    private readonly _seriesService: SeriesService,
     private readonly _fb: FormBuilder,
     private readonly _ref: MatDialogRef<ClassAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ISchool,
@@ -76,7 +78,7 @@ export class ClassAddComponent implements OnInit {
     let control = this.form.get('typeTeaching');
     if (control?.value !== null) {
       this.form.get('series')?.enable();
-      this._schoolService.getSeries(control?.value).subscribe({
+      this._seriesService.getSeries(control?.value).subscribe({
         next: (res) => {
           this.series = res;
         },
@@ -89,7 +91,7 @@ export class ClassAddComponent implements OnInit {
       ...this.form.value,
       idSchool: this.data.id,
     };
-    this._schoolService.createClass(payload).subscribe({
+    this._classesService.createClass(payload).subscribe({
       next: (res) => {
         this.close();
         this._toastr.success('Classe cadastrada com sucesso!');
