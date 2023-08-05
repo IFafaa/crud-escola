@@ -18,6 +18,8 @@ import { Formatters } from 'src/app/core/helpers/formatters';
 import { ClassAddComponent } from './components/class-add/class-add.component';
 import { ClassDetailsComponent } from './pages/class-details/class-details.component';
 import { ClassDetailsFormComponent } from './components/class-details-form/class-details-form.component';
+import { ClassDetailsStudentsComponent } from './components/class-details-students/class-details-students.component';
+import { StudentFormComponent } from './components/student-form/student-form.component';
 
 const routes: Routes = [
   {
@@ -46,6 +48,8 @@ const routes: Routes = [
     ClassAddComponent,
     ClassDetailsComponent,
     ClassDetailsFormComponent,
+    ClassDetailsStudentsComponent,
+    StudentFormComponent,
   ],
   imports: [
     CommonModule,

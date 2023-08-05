@@ -43,7 +43,10 @@ export class SchoolAddComponent {
         { value: null, disabled: false },
         [Validators.required, Validators.pattern(/^[\p{L}\s]+$/u)],
       ],
-      typeInstitution: [{ value: null, disabled: false }, [Validators.required]],
+      typeInstitution: [
+        { value: null, disabled: false },
+        [Validators.required],
+      ],
       typeTeaching: [{ value: null, disabled: false }, [Validators.required]],
       typeOpeningHours: [
         { value: null, disabled: false },
@@ -108,13 +111,13 @@ export class SchoolAddComponent {
           control?.setErrors(error);
           return;
         }
-        this.setLocation(res)
+        this.setLocation(res);
         this.setAddress();
       },
     });
   }
 
-  setLocation(location: any): void{
+  setLocation(location: any): void {
     this.form.get('location')?.patchValue({
       street: location.logradouro,
       neighborhood: location.bairro,
@@ -131,20 +134,20 @@ export class SchoolAddComponent {
     }, ${formValue.street}, ${formValue.number || ''}`;
   }
 
-  create(): void{
+  create(): void {
     const payload: ISchool = this.form.value;
     this._schoolService.createSchool(payload).subscribe({
       next: (res) => {
         this.close();
-        this._toastr.success("Escola cadastrada com sucesso!")
+        this._toastr.success('Escola cadastrada com sucesso!');
       },
       error: () => {
-        this._toastr.error("Houve um problema, tente novamente ou mais tarde")
-      }
-    })
+        this._toastr.error('Houve um problema, tente novamente ou mais tarde');
+      },
+    });
   }
 
-  close(){
-    this._ref.close()
+  close() {
+    this._ref.close();
   }
 }

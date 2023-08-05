@@ -24,11 +24,15 @@ export class SpinnerInterceptor implements HttpInterceptor {
       tap(
         async (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-            this.spinner.hide();
+            setInterval(() => {
+              this.spinner.hide();
+            }, 200);
           }
         },
         (err: any) => {
-          this.spinner.hide();
+          setInterval(() => {
+            this.spinner.hide();
+          }, 200);
         }
       )
     );

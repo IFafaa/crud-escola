@@ -3,7 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
 import { ISchool } from '../../models/school.model';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { finalize } from 'rxjs';
 import { IClass } from '../../models/class.model';
 import { IStudent } from '../../models/students.model';
@@ -28,7 +33,7 @@ export class SchoolDetailsComponent implements OnInit {
   students!: IStudent[];
 
   schoolForm!: FormGroup;
-  qntForm!: FormGroup
+  qntForm!: FormGroup;
 
   constructor(
     private readonly _router: Router,
@@ -94,11 +99,11 @@ export class SchoolDetailsComponent implements OnInit {
     });
   }
 
-  createQuantityForm(){
+  createQuantityForm() {
     this.qntForm = this._fb.group({
       classes: [null],
       students: [null],
-    })
+    });
   }
 
   get addressForm(): FormGroup {
@@ -126,7 +131,7 @@ export class SchoolDetailsComponent implements OnInit {
     this._classesService.getClasses(this.school.id).subscribe({
       next: (res) => {
         this.classes = res;
-        this.qntForm.get("classes")?.setValue(this.classes.length)
+        this.qntForm.get('classes')?.setValue(this.classes.length);
       },
     });
   }
@@ -135,7 +140,7 @@ export class SchoolDetailsComponent implements OnInit {
     this._studentService.getStudents(this.school.id).subscribe({
       next: (res) => {
         this.students = res;
-        this.qntForm.get("students")?.setValue(this.students.length)
+        this.qntForm.get('students')?.setValue(this.students.length);
       },
     });
   }

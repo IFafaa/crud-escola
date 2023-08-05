@@ -21,13 +21,10 @@
       </div>
       <div class="col-12 mb-3">
         <div>
-          <!-- <app-school-details-classes
-            *ngIf="classes && students && school"
-            [school]="school"
-            [isEditMode]="isEditMode"
-            [isReadOnlyMode]="isReadOnlyMode"
-            (changeClassCallback)="getStudents();getClasses()"
-          ></app-school-details-classes> -->
+          <app-class-details-students
+          [isEditMode]="isEditMode"
+          [isReadOnlyMode]="isReadOnlyMode"
+          ></app-class-details-students>
         </div>
       </div>
       <div class="col-12 mb-3" >
