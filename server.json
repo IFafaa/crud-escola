@@ -1,7 +1,56 @@
 {
-  "schools": [],
-  "classes": [],
-  "students": [],
+  "schools": [
+    {
+      "name": "Escola Estadual Frei Egídio Parisi",
+      "typeInstitution": 0,
+      "typeTeaching": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "typeOpeningHours": [
+        0,
+        1,
+        2
+      ],
+      "cnpj": "01576476000138",
+      "directorName": "Washington Ferreira Silvano",
+      "location": {
+        "cep": "77066012",
+        "street": "Avenida Copacabana",
+        "number": "233",
+        "neighborhood": "Setor Morada do Sol (Taquaralto)",
+        "city": "Palmas",
+        "state": "TO"
+      },
+      "id": 1
+    }
+  ],
+  "classes": [
+    {
+      "typeTeaching": 3,
+      "series": 13,
+      "name": "A",
+      "typeOpeningHours": 0,
+      "idSchool": 1,
+      "id": 1
+    }
+  ],
+  "students": [
+    {
+      "name": "Fabrício Lima",
+      "age": "17",
+      "cpf": "09883716699",
+      "id": 1
+    },
+    {
+      "name": "Rosâna Aparecida de Lima Oliveira",
+      "age": "16",
+      "cpf": "83251030604",
+      "id": 2
+    }
+  ],
   "typeTeaching": [
     {
       "name": "Jardim de infância",

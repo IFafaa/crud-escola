@@ -31,11 +31,13 @@ export class StudentFormComponent implements OnInit {
     private readonly _toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: IStudentFormMat
   ) {
-    this.isEdit = this.data.studentId !== null;
+    this.isEdit = this.data.studentId !== undefined;
     this.isCreate = !this.data.studentId;
   }
 
   ngOnInit(): void {
+    console.log(this.data);
+
     this.createForm();
     this.getStudent();
   }
@@ -68,12 +70,7 @@ export class StudentFormComponent implements OnInit {
   }
 
   create(): void {
-    let payload: IStudent = this.form.value;
-    payload = {
-      ...payload,
-      idClass: this.data.classId,
-      idSchool: this.data.schoolId,
-    };
+    const payload: IStudent = this.form.value;
     this._studentService.createStudent(payload).subscribe({
       next: (res) => {
         this._toastr.success('Estudante criado com sucesso!');

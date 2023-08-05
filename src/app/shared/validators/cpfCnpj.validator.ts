@@ -2,7 +2,7 @@ import { ValidatorFn, AbstractControl } from "@angular/forms";
 
 
 export function cpfCnpjValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
+  return (control: AbstractControl): { [key: string]: boolean } | null => {
     const value = control.value;
 
     if (value === null || value === '') {
@@ -19,7 +19,7 @@ export function cpfCnpjValidator(): ValidatorFn {
 }
 
 
-function isValidCPF(cpf: any) {
+function isValidCPF(cpf: string) {
   if (typeof cpf !== 'string') return false;
   cpf = cpf.replace(/[\s.-]*/gim, '');
   if (
