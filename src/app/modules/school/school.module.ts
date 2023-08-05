@@ -12,6 +12,10 @@ import { NgxMaskModule } from 'ngx-mask';
 import { SchoolDetailsComponent } from './pages/school-details/school-details.component';
 import { SchoolDetailsFormComponent } from './components/school-details-form/school-details-form.component';
 import { SchoolDetailsAddressComponent } from './components/school-details-address/school-details-address.component';
+import { SchoolDetailsCapacityComponent } from './components/school-details-capacity/school-details-capacity.component';
+import { SchoolDetailsClassesComponent } from './components/school-details-classes/school-details-classes.component';
+import { Formatters } from 'src/app/core/helpers/formatters';
+import { ClassAddComponent } from './components/class-add/class-add.component';
 
 const routes: Routes = [
   {
@@ -26,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SchoolListComponent, SchoolAddComponent, SchoolDetailsComponent, SchoolDetailsFormComponent, SchoolDetailsAddressComponent],
+  declarations: [SchoolListComponent, SchoolAddComponent, SchoolDetailsComponent, SchoolDetailsFormComponent, SchoolDetailsAddressComponent, SchoolDetailsCapacityComponent, SchoolDetailsClassesComponent, ClassAddComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -36,7 +40,10 @@ const routes: Routes = [
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxMaskModule.forChild()
+    NgxMaskModule.forChild(),
   ],
+  providers: [
+    Formatters
+  ]
 })
 export class SchoolModule {}

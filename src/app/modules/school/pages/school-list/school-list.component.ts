@@ -10,6 +10,7 @@ import { finalize } from 'rxjs';
 import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
 import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
 import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
+import { Formatters } from 'src/app/core/helpers/formatters';
 
 @Component({
   selector: 'app-school-list',
@@ -72,11 +73,7 @@ export class SchoolListComponent implements OnInit {
   }
 
   formatSchoolType(schoolType: ENUM_SCHOOL_TYPE): string {
-    const FORMATTER_SCHOOL_TYPE = {
-      0: 'Estadual',
-      1: 'Municipal',
-    };
-    return FORMATTER_SCHOOL_TYPE[schoolType];
+    return Formatters.formatSchoolType(schoolType);
   }
 
   deleteSchool(id: number): void {
@@ -94,11 +91,12 @@ export class SchoolListComponent implements OnInit {
     });
   }
 
+
   editSchool(id: number): void {
-    this._router.navigate(["/escolas",id,ENUM_MODE_TYPE.EDIT])
+    this._router.navigate(['/escolas', id, ENUM_MODE_TYPE.EDIT]);
   }
 
   viewSchool(id: number): void {
-    this._router.navigate(["/escolas",id,ENUM_MODE_TYPE.VIEW])
+    this._router.navigate(['/escolas', id, ENUM_MODE_TYPE.VIEW]);
   }
 }

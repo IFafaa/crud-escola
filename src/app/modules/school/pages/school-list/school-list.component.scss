@@ -8,44 +8,6 @@
   font-size: 20px;
 }
 
-.table-container {
-  width: 100%;
-  margin: 20px auto;
-  background-color: var(--white);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-thead {
-  background-color: var(--primary);
-  color: var(--white);
-}
-
-th, td {
-  padding: 18px 15px;
-  text-align: left;
-}
-
-td{
-  padding: 30px 15px;
-}
-
-th {
-  text-transform: uppercase;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #dbdbdb;
-}
-
-tbody tr:hover {
-  background-color: #bbbbbb;
-}
 
 .btn{
   &--action{

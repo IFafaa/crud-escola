@@ -1,0 +1,71 @@
+<div class="p-3 content d-flex flex-column justify-content-between">
+  <div>
+    <h4 class="mb-3">Cadastrar Classe</h4>
+    <div>
+      <div class="row" [formGroup]="form">
+        <div class="col-12">
+          <mat-form-field class="mb-2">
+            <mat-label>Tipos de ensino</mat-label>
+            <mat-select formControlName="typeTeaching" (selectionChange)="selectTeachingChange($event)">
+              <mat-option *ngFor="let type of typeTeaching" [value]="type.id" >
+                {{ type.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('typeTeaching')?.hasError('required')"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+          <mat-form-field class="mb-2">
+            <mat-label>Série</mat-label>
+            <mat-select formControlName="series">
+              <mat-option *ngFor="let type of series" [value]="type.id">
+                {{ type.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('series')?.hasError('required')"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+          <mat-form-field class="mb-2">
+            <mat-label>Nome (Letra)</mat-label>
+            <input matInput formControlName="name" placeholder="ex: A" maxlength="1"/>
+            <mat-error *ngIf="form.get('name')?.hasError('required')"
+              >Campo obrigatório</mat-error
+            >
+            <mat-error *ngIf="form.get('name')?.hasError('pattern')"
+              >Digite apenas uma letra maiúscula</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+          <mat-form-field class="mb-2">
+            <mat-label>Turnos de funcionamento</mat-label>
+            <mat-select formControlName="typeOpeningHours">
+              <mat-option
+                *ngFor="let type of typeOpeningHours"
+                [value]="type.id"
+              >
+                {{ type.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="form.get('typeOpeningHours')?.hasError('required')"
+              >Campo obrigatório</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <default-button
+      value="Cadastrar"
+      [disabled]="form.invalid"
+      (clickEvent)="create()"
+    ></default-button>
+  </div>
+</div>

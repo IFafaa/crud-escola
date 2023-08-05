@@ -6,14 +6,44 @@
       </div>
     </div>
     <div class="row">
-      <div class="card-default p-3 col-12 mb-3">
-        <app-school-details-form *ngIf="school" [isEditMode]="isEditMode" [isReadOnlyMode]="isReadOnlyMode" [form]="schoolForm"></app-school-details-form>
+      <div class="col-12 mb-3">
+        <div class="card-default p-3">
+          <app-school-details-form
+            *ngIf="school"
+            [isEditMode]="isEditMode"
+            [isReadOnlyMode]="isReadOnlyMode"
+            [form]="schoolForm"
+          ></app-school-details-form>
+        </div>
       </div>
-      <div class="card-default p-3 col-6 mb-3">
-        <app-school-details-address *ngIf="school" [isEditMode]="isEditMode" [isReadOnlyMode]="isReadOnlyMode" [form]="addressForm"></app-school-details-address>
+      <div class="col-6 mb-3">
+        <div class="mb-2"><h5>Endereço</h5></div>
+        <div class="card-default p-3">
+          <app-school-details-address
+            *ngIf="school"
+            [isEditMode]="isEditMode"
+            [isReadOnlyMode]="isReadOnlyMode"
+            [form]="addressForm"
+          ></app-school-details-address>
+        </div>
       </div>
-      <div class="card-default p-3 col-6 mb-3">
-        <app-school-details-address *ngIf="school" [isEditMode]="isEditMode" [isReadOnlyMode]="isReadOnlyMode" [form]="addressForm"></app-school-details-address>
+      <div class="col-6 mb-3">
+        <div class="mb-2"><h5>Quantidade</h5></div>
+        <div class="card-default p-3">
+          <app-school-details-capacity
+            *ngIf="classes && students && school"
+            [classes]="classes"
+            [students]="students"
+          ></app-school-details-capacity>
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <div>
+          <app-school-details-classes
+            *ngIf="classes && students && school"
+            [school]="school"
+          ></app-school-details-classes>
+        </div>
       </div>
     </div>
   </div>

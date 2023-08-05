@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <div>
+    <h5>Classes</h5>
+  </div>
+  <div class="d-flex">
+    <div>
+      <default-button
+        value=""
+        icon="add"
+        type="primary"
+        (clickEvent)="createClass()"
+      ></default-button>
+    </div>
+  </div>
+</div>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tipo de Ensino</th>
+        <th>Turno</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container
+        *ngIf="classes.length && statusList == ENUM_STATUS_LIST.IDLE"
+      >
+        <tr *ngFor="let class of classes">
+          <td>{{ formatClassName(class.name, class.series) }}</td>
+          <td>{{ formatTypeTeaching(class.typeTeaching) }}</td>
+          <td>{{ formatOpeningHours(class.typeOpeningHours) }}</td>
+          <td>
+            <div class="d-flex gap-2">
+              <default-button
+                icon="visibility"
+                type="secondary"
+                (clickEvent)="viewClass(class.id)"
+              ></default-button>
+              <default-button
+                icon="edit"
+                (clickEvent)="editClass(class.id)"
+              ></default-button>
+              <default-button
+                icon="delete"
+                type="cancel"
+                (clickEvent)="deleteClass(class.id)"
+              ></default-button>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
+    <div class="p-5 d-flex w-100 justify-content-center">
+      <span>Não foram encontrados registros</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
+    <div class="p-5 d-flex w-100 justify-content-center">
+      <span
+        >Houve um problema ao realizar a consulta, tente novamente mais tarde</span
+      >
+    </div>
+  </ng-container>
+</div>

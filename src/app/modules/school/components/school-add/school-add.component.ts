@@ -40,7 +40,7 @@ export class SchoolAddComponent {
     this.form = this._fb.group({
       name: [
         { value: null, disabled: false },
-        [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)],
+        [Validators.required, Validators.pattern(/^[\p{L}\s]+$/u)],
       ],
       typeInstitution: [{ value: null, disabled: false }, [Validators.required]],
       typeTeaching: [{ value: null, disabled: false }, [Validators.required]],

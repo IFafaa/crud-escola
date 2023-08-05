@@ -1,28 +1,29 @@
 {
   "schools": [
     {
-      "name": "Escola Estadual Segismundo Pereira",
-      "typeInstitution": 1,
+      "name": "Escola Estadual Frei Egídio Parisi",
+      "typeInstitution": 0,
       "typeTeaching": [
-        3,
-        4
+        1,
+        2,
+        3
       ],
       "typeOpeningHours": [
         0,
-        0,
-        0
+        1,
+        2
       ],
-      "cnpj": "23452342343242",
-      "directorName": "Rayssa Pereira Marian",
+      "cnpj": "12938812389128",
+      "directorName": "Washington Ferreira Souza",
       "location": {
-        "cep": "38413363",
-        "street": "Rua Maria Francisca de Siqueira",
-        "number": "244",
-        "neighborhood": "Chácaras Tubalina e Quartel",
+        "cep": "38407744",
+        "street": "Rua Providence",
+        "number": "324",
+        "neighborhood": "Novo Mundo",
         "city": "Uberlândia",
         "state": "MG"
       },
-      "id": 2
+      "id": 1
     },
     {
       "name": "teste",
@@ -30,33 +31,67 @@
       "typeTeaching": [
         0,
         1,
+        2,
         3
       ],
       "typeOpeningHours": [
         0,
-        0
+        1,
+        2
       ],
-      "cnpj": "42342342342342",
+      "cnpj": "23121231231321",
       "directorName": "teste teste",
       "location": {
         "cep": "38407744",
         "street": "Rua Providence",
-        "number": "46644",
+        "number": "233",
         "neighborhood": "Novo Mundo",
         "city": "Uberlândia",
         "state": "MG"
       },
-      "id": 3
+      "id": 2
     }
   ],
   "classes": [
     {
-      "id": 0,
+      "id": 1,
       "idSchool": 0,
-      "nameClass": "C",
+      "name": "C",
       "series": "2º",
-      "idTypeTeaching": 1,
-      "idTypeOpeningHours": 1
+      "typeTeaching": 1,
+      "typeOpeningHours": 1
+    },
+    {
+      "typeTeaching": 0,
+      "series": 1,
+      "name": "A",
+      "typeOpeningHours": 0,
+      "idSchool": 2,
+      "id": 2
+    },
+    {
+      "typeTeaching": 1,
+      "series": 5,
+      "name": "A",
+      "typeOpeningHours": 0,
+      "idSchool": 2,
+      "id": 3
+    },
+    {
+      "typeTeaching": 3,
+      "series": 14,
+      "name": "A",
+      "typeOpeningHours": 0,
+      "idSchool": 2,
+      "id": 4
+    },
+    {
+      "typeTeaching": 3,
+      "series": 15,
+      "name": "A",
+      "typeOpeningHours": 0,
+      "idSchool": 2,
+      "id": 5
     }
   ],
   "students": [
@@ -66,6 +101,130 @@
       "idSchool": 0,
       "name": "Fabrício",
       "age": 14
+    }
+  ],
+  "typeTeaching": [
+    {
+      "name": "Jardim de infância",
+      "id": 0
+    },
+    {
+      "name": "Ensino Fundamental I",
+      "id": 1
+    },
+    {
+      "name": "Ensino Fundamental II",
+      "id": 2
+    },
+    {
+      "name": "Ensino Médio",
+      "id": 3
+    }
+  ],
+  "typeInstitution": [
+    {
+      "name": "Estadual",
+      "id": 0
+    },
+    {
+      "name": "Municipal",
+      "id": 1
+    }
+  ],
+  "typeOpeningHours": [
+    {
+      "name": "Manhã",
+      "id": 0
+    },
+    {
+      "name": "Tarde",
+      "id": 1
+    },
+    {
+      "name": "Noite",
+      "id": 2
+    }
+  ],
+  "series": [
+    {
+      "name": "Berçário ou Creche",
+      "idTypeTeaching": 0,
+      "id": 0
+    },
+    {
+      "name": "Maternal I",
+      "idTypeTeaching": 0,
+      "id": 1
+    },
+    {
+      "name": "Maternal II",
+      "idTypeTeaching": 0,
+      "id": 2
+    },
+    {
+      "name": "Pré-Escola",
+      "idTypeTeaching": 0,
+      "id": 3
+    },
+    {
+      "name": "1º Ano",
+      "idTypeTeaching": 1,
+      "id": 4
+    },
+    {
+      "name": "2º Ano",
+      "idTypeTeaching": 1,
+      "id": 5
+    },
+    {
+      "name": "3º Ano",
+      "idTypeTeaching": 1,
+      "id": 6
+    },
+    {
+      "name": "4º Ano",
+      "idTypeTeaching": 1,
+      "id": 7
+    },
+    {
+      "name": "5º Ano",
+      "idTypeTeaching": 1,
+      "id": 8
+    },
+    {
+      "name": "6º Ano",
+      "idTypeTeaching": 2,
+      "id": 9
+    },
+    {
+      "name": "7º Ano",
+      "idTypeTeaching": 2,
+      "id": 10
+    },
+    {
+      "name": "8º Ano",
+      "idTypeTeaching": 2,
+      "id": 11
+    },
+    {
+      "name": "9º Ano",
+      "idTypeTeaching": 2,
+      "id": 12
+    },
+    {
+      "name": "1º Ano",
+      "idTypeTeaching": 3,
+      "id": 13
+    },
+    {
+      "name": "2º Ano",
+      "idTypeTeaching": 3,
+      "id": 14
+    },
+    {
+      "name": "3º Ano",
+      "idTypeTeaching": 3,
+      "id": 15
     }
   ]
 }
