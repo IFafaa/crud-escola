@@ -70,7 +70,11 @@ export class StudentFormComponent implements OnInit {
   }
 
   create(): void {
-    const payload: IStudent = this.form.value;
+    const payload: IStudent = {
+      ...this.form.value,
+      idClass: this.data.classId,
+      idSchool: this.data.schoolId,
+    };
     this._studentService.createStudent(payload).subscribe({
       next: (res) => {
         this._toastr.success('Estudante criado com sucesso!');

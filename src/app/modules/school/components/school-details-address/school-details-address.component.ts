@@ -45,5 +45,7 @@ export class SchoolDetailsAddressComponent implements OnInit {
       city: location.localidade,
       state: location.uf,
     });
+    console.log('form',this.form.value);
+
   }
 }

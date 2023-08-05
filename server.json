@@ -1,7 +1,7 @@
 {
   "schools": [
     {
-      "name": "Escola Estadual Frei Egídio Parisi",
+      "name": "Escola Estadual Frei Egídio Parisu",
       "typeInstitution": 0,
       "typeTeaching": [
         0,
@@ -42,13 +42,385 @@
       "name": "Fabrício Lima",
       "age": "17",
       "cpf": "09883716699",
+      "idSchool": 1,
+      "idClass": 1,
       "id": 1
     },
     {
       "name": "Rosâna Aparecida de Lima Oliveira",
       "age": "16",
       "cpf": "83251030604",
+      "idSchool": 1,
+      "idClass": 1,
       "id": 2
+    },
+    {
+      "name": "Lucas Santos",
+      "age": "18",
+      "cpf": "27805984698",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 3
+    },
+    {
+      "name": "Isabela Souza",
+      "age": "17",
+      "cpf": "37961492437",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 4
+    },
+    {
+      "name": "Pedro Alves",
+      "age": "16",
+      "cpf": "08491557835",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 5
+    },
+    {
+      "name": "Ana Oliveira",
+      "age": "16",
+      "cpf": "21539817093",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 6
+    },
+    {
+      "name": "Gustavo Silva",
+      "age": "17",
+      "cpf": "78149063007",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 7
+    },
+    {
+      "name": "Maria Souza",
+      "age": "18",
+      "cpf": "17389084026",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 8
+    },
+    {
+      "name": "Rafaela Pereira",
+      "age": "17",
+      "cpf": "04761069318",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 9
+    },
+    {
+      "name": "Tiago Almeida",
+      "age": "16",
+      "cpf": "52046479025",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 10
+    },
+    {
+      "name": "Bruna Oliveira",
+      "age": "18",
+      "cpf": "61104835078",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 11
+    },
+    {
+      "name": "Felipe Santos",
+      "age": "17",
+      "cpf": "10217936004",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 12
+    },
+    {
+      "name": "Larissa Costa",
+      "age": "16",
+      "cpf": "58728749013",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 13
+    },
+    {
+      "name": "Vitor Silva",
+      "age": "18",
+      "cpf": "46467938045",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 14
+    },
+    {
+      "name": "Fernanda Almeida",
+      "age": "17",
+      "cpf": "17853628082",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 15
+    },
+    {
+      "name": "Matheus Oliveira",
+      "age": "16",
+      "cpf": "60429167023",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 16
+    },
+    {
+      "name": "Mariana Santos",
+      "age": "17",
+      "cpf": "73825120013",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 17
+    },
+    {
+      "name": "Ricardo Alves",
+      "age": "18",
+      "cpf": "26061293007",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 18
+    },
+    {
+      "name": "Carolina Lima",
+      "age": "17",
+      "cpf": "87645934050",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 19
+    },
+    {
+      "name": "Guilherme Silva",
+      "age": "16",
+      "cpf": "48172124090",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 20
+    },
+    {
+      "name": "Juliana Oliveira",
+      "age": "18",
+      "cpf": "14182509050",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 21
+    },
+    {
+      "name": "Leonardo Souza",
+      "age": "17",
+      "cpf": "15340711092",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 22
+    },
+    {
+      "name": "Amanda Pereira",
+      "age": "16",
+      "cpf": "36987513010",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 23
+    },
+    {
+      "name": "Gustavo Almeida",
+      "age": "18",
+      "cpf": "70861785080",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 24
+    },
+    {
+      "name": "Lara Costa",
+      "age": "17",
+      "cpf": "84625181076",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 25
+    },
+    {
+      "name": "Renato Silva",
+      "age": "16",
+      "cpf": "18250962041",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 26
+    },
+    {
+      "name": "Beatriz Oliveira",
+      "age": "17",
+      "cpf": "12390849074",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 27
+    },
+    {
+      "name": "Carolina Lima",
+      "age": "17",
+      "cpf": "87645934050",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 19
+    },
+    {
+      "name": "Guilherme Silva",
+      "age": "16",
+      "cpf": "48172124090",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 20
+    },
+    {
+      "name": "Juliana Oliveira",
+      "age": "18",
+      "cpf": "14182509050",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 21
+    },
+    {
+      "name": "Leonardo Souza",
+      "age": "17",
+      "cpf": "15340711092",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 22
+    },
+    {
+      "name": "Amanda Pereira",
+      "age": "16",
+      "cpf": "36987513010",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 23
+    },
+    {
+      "name": "Gustavo Almeida",
+      "age": "18",
+      "cpf": "70861785080",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 24
+    },
+    {
+      "name": "Lara Costa",
+      "age": "17",
+      "cpf": "84625181076",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 25
+    },
+    {
+      "name": "Renato Silva",
+      "age": "16",
+      "cpf": "18250962041",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 26
+    },
+    {
+      "name": "Beatriz Oliveira",
+      "age": "17",
+      "cpf": "12390849074",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 27
+    },
+    {
+      "name": "Carlos Santos",
+      "age": "18",
+      "cpf": "53710493052",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 28
+    },
+    {
+      "name": "Helena Almeida",
+      "age": "17",
+      "cpf": "18762483070",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 29
+    },
+    {
+      "name": "Vinícius Oliveira",
+      "age": "16",
+      "cpf": "50619426038",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 30
+    },
+    {
+      "name": "Laura Pereira",
+      "age": "18",
+      "cpf": "29210842015",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 31
+    },
+    {
+      "name": "Raul Silva",
+      "age": "17",
+      "cpf": "54601932005",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 32
+    },
+    {
+      "name": "Alice Oliveira",
+      "age": "16",
+      "cpf": "75630871084",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 33
+    },
+    {
+      "name": "Henrique Souza",
+      "age": "18",
+      "cpf": "47951060030",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 34
+    },
+    {
+      "name": "Camila Lima",
+      "age": "17",
+      "cpf": "28390162006",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 35
+    },
+    {
+      "name": "Ricardo Almeida",
+      "age": "16",
+      "cpf": "42591813005",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 36
+    },
+    {
+      "name": "Carolina Costa",
+      "age": "17",
+      "cpf": "76428949007",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 37
+    },
+    {
+      "name": "Daniel Silva",
+      "age": "18",
+      "cpf": "10857394031",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 38
+    },
+    {
+      "name": "Mariana Almeida",
+      "age": "17",
+      "cpf": "68941003084",
+      "idSchool": 1,
+      "idClass": 1,
+      "id": 39
     }
   ],
   "typeTeaching": [

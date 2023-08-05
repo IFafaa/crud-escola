@@ -87,14 +87,14 @@ export class SchoolDetailsComponent implements OnInit {
           { value: null, disabled: this.isReadOnlyMode },
           [Validators.required, Validators.minLength(8)],
         ],
-        street: [{ value: null, disabled: true }, [Validators.required]],
+        street: [{ value: null, disabled: this.isReadOnlyMode }],
         number: [
           { value: null, disabled: this.isReadOnlyMode },
           [Validators.required],
         ],
-        neighborhood: [{ value: null, disabled: true }, [Validators.required]],
-        city: [{ value: null, disabled: true }, [Validators.required]],
-        state: [{ value: null, disabled: true }, [Validators.required]],
+        neighborhood: [{ value: null, disabled: this.isReadOnlyMode }],
+        city: [{ value: null, disabled: this.isReadOnlyMode }],
+        state: [{ value: null, disabled: this.isReadOnlyMode }],
       }),
     });
   }
