@@ -20,7 +20,7 @@
         <th>Nome</th>
         <th>Idade</th>
         <th>CPF</th>
-        <th *ngIf="isEditMode">Ações</th>
+        <th *ngIf="isEditMode" class="text-center">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -32,7 +32,7 @@
           <td>{{ student.age }}</td>
           <td>{{ student.cpf | mask: "000.000.000-00" }}</td>
           <td *ngIf="isEditMode">
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 justify-content-center">
               <default-button
                 icon="edit"
                 (clickEvent)="createEditStudent(student.id)"

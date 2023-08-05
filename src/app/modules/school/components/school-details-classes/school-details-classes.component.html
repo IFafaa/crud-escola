@@ -20,7 +20,7 @@
         <th>Nome</th>
         <th>Tipo de Ensino</th>
         <th>Turno</th>
-        <th>Ações</th>
+        <th class="text-center">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -32,7 +32,7 @@
           <td>{{ formatTypeTeaching(class.typeTeaching) }}</td>
           <td>{{ formatOpeningHours(class.typeOpeningHours) }}</td>
           <td>
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 justify-content-center">
               <default-button
                 icon="visibility"
                 type="secondary"

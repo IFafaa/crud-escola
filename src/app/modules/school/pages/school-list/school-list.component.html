@@ -38,7 +38,7 @@
             <th>Bairro</th>
             <th>Tipo instituição</th>
             <th>Diretor</th>
-            <th>Ações</th>
+            <th class="text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +49,7 @@
               <td>{{ formatSchoolType(school.typeInstitution) }}</td>
               <td>{{ school.directorName }}</td>
               <td>
-                <div class="d-flex gap-2">
+                <div class="d-flex gap-2 justify-content-center">
                   <default-button icon="visibility" type="secondary" (clickEvent)="viewSchool(school.id)"></default-button>
                   <default-button icon="edit" (clickEvent)="editSchool(school.id)"></default-button>
                   <default-button icon="delete" type="cancel" (clickEvent)="deleteSchool(school.id)"></default-button>
