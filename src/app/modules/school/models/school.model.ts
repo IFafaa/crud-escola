@@ -1,11 +1,16 @@
+import { ENUM_OPENING_HOURS_TYPE } from 'src/app/shared/enums/opening-hours-type.enum';
+import { ENUM_SCHOOL_TYPE } from 'src/app/shared/enums/school-type.enum';
+import { ENUM_TEACHING_TYPE } from 'src/app/shared/enums/teaching-type.enum';
+
 export interface ISchool {
+  id: number;
   name: string;
   cnpj: string;
-  typeInstitution: number;
-  typeTeaching: number[];
-  typeOpeningHours: number[];
+  typeInstitution: ENUM_SCHOOL_TYPE;
+  typeTeaching: ENUM_TEACHING_TYPE[];
+  typeOpeningHours: ENUM_OPENING_HOURS_TYPE[];
   directorName: string;
-  location: Location;
+  location: ILocation;
 }
 
 interface ILocation {

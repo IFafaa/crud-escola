@@ -5,7 +5,11 @@
         <h4>Escolas</h4>
       </div>
       <div class="d-flex gap-2">
-        <div>
+        <div class="d-flex gap-2">
+          <mat-form-field class="mb-2" *ngIf="showFilter">
+            <mat-label>Nome</mat-label>
+            <input matInput [formControl]="filter"/>
+          </mat-form-field>
           <default-button
             value=""
             icon="search"
@@ -32,21 +36,39 @@
           <tr>
             <th>Nome</th>
             <th>Bairro</th>
-            <th>Qtd. de turmas</th>
-            <th>Qtd. de alunos</th>
+            <th>Tipo instituição</th>
+            <th>Diretor</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Escola Estadual Frei Egídio Parisi</td>
-            <td>Segismundo Pereira</td>
-            <td>15</td>
-            <td>400</td>
-            <td></td>
-          </tr>
+          <ng-container *ngIf="schools.length && statusList == ENUM_STATUS_LIST.IDLE">
+            <tr *ngFor="let school of schools">
+              <td>{{ school.name }}</td>
+              <td>{{ school.location.neighborhood }}</td>
+              <td>{{ formatSchoolType(school.typeInstitution) }}</td>
+              <td>{{ school.directorName }}</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <default-button icon="visibility" type="secondary"></default-button>
+                  <default-button icon="edit" (clickEvent)="editSchool(school.id)"></default-button>
+                  <default-button icon="delete" type="cancel" (clickEvent)="deleteSchool(school.id)"></default-button>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
+      <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
+        <div class="p-5 d-flex w-100 justify-content-center">
+          <span>Não foram encontrados registros</span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
+        <div class="p-5 d-flex w-100 justify-content-center">
+          <span>Houve um problema ao realizar a consulta, tente novamente mais tarde</span>
+        </div>
+      </ng-container>
     </div>
   </div>
 </div>

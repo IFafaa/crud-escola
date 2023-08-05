@@ -13,14 +13,14 @@ export class SchoolService {
     private http: HttpClient
   ) {}
 
-  typeSchool(): Observable<ISelect[]> {
+  typeInstitution(): Observable<ISelect[]> {
     return of([
       {
-        name: 'Municipal',
+        name: 'Estadual',
         id: 0,
       },
       {
-        name: 'Estadual',
+        name: 'Municipal',
         id: 1,
       },
     ]);
@@ -68,7 +68,15 @@ export class SchoolService {
     ]);
   }
 
-  createSchool(school: ISchool): Observable<any>{
-    return this.http.post(environment.apiUrl + 'schools', school)
+  getSchools(): Observable<ISchool[]>{
+    return this.http.get<ISchool[]>(environment.apiUrl + 'schools')
+  }
+
+  createSchool(school: ISchool): Observable<ISchool>{
+    return this.http.post<ISchool>(environment.apiUrl + 'schools', school)
+  }
+
+  deleteSchool(id: number): Observable<ISchool>{
+    return this.http.delete<ISchool>(environment.apiUrl + 'schools/' + id)
   }
 }

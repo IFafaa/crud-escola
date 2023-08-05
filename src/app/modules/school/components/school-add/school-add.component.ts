@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CepService } from 'src/app/core/services/cep.service';
 import { ISchool } from '../../models/school.model';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'src/app/core/services/toastr.service';
 
 @Component({
   selector: 'app-school-add',
@@ -12,7 +13,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./school-add.component.scss'],
 })
 export class SchoolAddComponent {
-  typeSchools: ISelect[] = [];
+  typeInstitution: ISelect[] = [];
   typeTeaching: ISelect[] = [];
   typeOpeningHours: ISelect[] = [];
 
@@ -24,11 +25,12 @@ export class SchoolAddComponent {
     private readonly _schoolService: SchoolService,
     private readonly _fb: FormBuilder,
     private readonly _cepService: CepService,
-    private readonly _ref: MatDialogRef<SchoolAddComponent>
+    private readonly _ref: MatDialogRef<SchoolAddComponent>,
+    private readonly _toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.getTypeSchool();
+    this.getTypeInstitution();
     this.getTypeTeaching();
     this.getTypeOpeningHours();
     this.createForm();
@@ -40,7 +42,7 @@ export class SchoolAddComponent {
         { value: null, disabled: false },
         [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)],
       ],
-      typeSchool: [{ value: null, disabled: false }, [Validators.required]],
+      typeInstitution: [{ value: null, disabled: false }, [Validators.required]],
       typeTeaching: [{ value: null, disabled: false }, [Validators.required]],
       typeOpeningHours: [
         { value: null, disabled: false },
@@ -68,10 +70,10 @@ export class SchoolAddComponent {
     });
   }
 
-  getTypeSchool(): void {
-    this._schoolService.typeSchool().subscribe({
+  getTypeInstitution(): void {
+    this._schoolService.typeInstitution().subscribe({
       next: (res) => {
-        this.typeSchools = res;
+        this.typeInstitution = res;
       },
     });
   }
@@ -133,6 +135,10 @@ export class SchoolAddComponent {
     this._schoolService.createSchool(payload).subscribe({
       next: (res) => {
         this.close();
+        this._toastr.success("Escola cadastrada com sucesso!")
+      },
+      error: () => {
+        this._toastr.error("Houve um problema, tente novamente ou mais tarde")
       }
     })
   }

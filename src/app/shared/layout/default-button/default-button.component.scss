@@ -13,6 +13,11 @@
   gap: 5px;
   cursor: pointer;
 
+  &--action{
+    width: 40px !important;
+    height: 40px !important;
+  }
+
   &--primary{
     background-color: var(--primary);
     &:hover{

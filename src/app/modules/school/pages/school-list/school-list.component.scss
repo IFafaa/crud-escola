@@ -27,8 +27,12 @@ thead {
 }
 
 th, td {
-  padding: 12px 15px;
+  padding: 18px 15px;
   text-align: left;
+}
+
+td{
+  padding: 30px 15px;
 }
 
 th {
@@ -36,9 +40,16 @@ th {
 }
 
 tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #dbdbdb;
 }
 
 tbody tr:hover {
-  background-color: #ddd;
+  background-color: #bbbbbb;
+}
+
+.btn{
+  &--action{
+    height: 56px;
+    width: 56px;
+  }
 }

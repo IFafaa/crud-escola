@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./school-form.component.scss'],
 })
 export class SchoolFormComponent implements OnInit {
-  typeSchools: ISelect[] = [];
+  typeInstitutions: ISelect[] = [];
   typeTeaching: ISelect[] = [];
   typeOpeningHours: ISelect[] = [];
 
@@ -17,15 +17,15 @@ export class SchoolFormComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.getTypeSchool();
+    this.getTypeInstitution();
     this.getTypeTeaching();
     this.getTypeOpeningHours();
   }
 
-  getTypeSchool(): void {
-    this._schoolService.typeSchool().subscribe({
+  getTypeInstitution(): void {
+    this._schoolService.typeInstitution().subscribe({
       next: (res) => {
-        this.typeSchools = res;
+        this.typeInstitutions = res;
       },
     });
   }
