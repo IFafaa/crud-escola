@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
 import { ISchool } from '../../models/school.model';
 import { IStudent } from '../../models/students.model';
@@ -9,6 +8,7 @@ import { SchoolService } from '../../services/school.service';
 import { IClass } from '../../models/class.model';
 import { finalize } from 'rxjs';
 import { ClassesService } from '../../services/classes.service';
+import { ToastrService } from 'src/app/core/services/toastr.service';
 
 @Component({
   selector: 'app-class-details',
@@ -34,7 +34,8 @@ export class ClassDetailsComponent implements OnInit {
     private readonly _router: Router,
     private readonly _schoolService: SchoolService,
     private readonly _classesService: ClassesService,
-    private readonly _fb: FormBuilder
+    private readonly _fb: FormBuilder,
+    private readonly _toastr: ToastrService
   ) {
     this.mode = <ENUM_MODE_TYPE>(
       this._route.snapshot.paramMap.get('classMethod')
@@ -52,8 +53,14 @@ export class ClassDetailsComponent implements OnInit {
   }
   createClassForm(): void {
     this.classForm = this._fb.group({
-      typeTeaching: [{ value: null, disabled: this.isReadOnlyMode }, [Validators.required]],
-      series: [{ value: null, disabled: this.isReadOnlyMode }, [Validators.required]],
+      typeTeaching: [
+        { value: null, disabled: this.isReadOnlyMode },
+        [Validators.required],
+      ],
+      series: [
+        { value: null, disabled: this.isReadOnlyMode },
+        [Validators.required],
+      ],
       name: [
         { value: null, disabled: this.isReadOnlyMode },
         [Validators.required, Validators.pattern(/^[A-Z]+$/)],
@@ -88,11 +95,21 @@ export class ClassDetailsComponent implements OnInit {
       });
   }
 
-  saveClass(){
-
+  saveClass() {
+    const payload: IClass = {
+      ...this.classForm.value,
+      idSchool: this.schoolId,
+      id: this.classId,
+    };
+    this._classesService.editClass(this.classId, payload).subscribe({
+      next: () => {
+        this.back();
+        this._toastr.success('Classe criada com sucesso!');
+      },
+    });
   }
 
-  back(): void{
-    this._router.navigate(["/escolas", this.schoolId, ENUM_MODE_TYPE.EDIT])
+  back(): void {
+    this._router.navigate(['/escolas', this.schoolId, ENUM_MODE_TYPE.EDIT]);
   }
 }

@@ -20,7 +20,7 @@
         <th>Nome</th>
         <th>Tipo de Ensino</th>
         <th>Turno</th>
-        <th *ngIf="isEditMode">Ações</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
           <td>{{ formatClassName(class.name, class.series) }}</td>
           <td>{{ formatTypeTeaching(class.typeTeaching) }}</td>
           <td>{{ formatOpeningHours(class.typeOpeningHours) }}</td>
-          <td *ngIf="isEditMode">
+          <td>
             <div class="d-flex gap-2">
               <default-button
                 icon="visibility"
@@ -39,10 +39,12 @@
                 (clickEvent)="viewClass(class.id)"
               ></default-button>
               <default-button
+                *ngIf="isEditMode"
                 icon="edit"
                 (clickEvent)="editClass(class.id)"
               ></default-button>
               <default-button
+                *ngIf="isEditMode"
                 icon="delete"
                 type="cancel"
                 (clickEvent)="deleteClass(class.id)"

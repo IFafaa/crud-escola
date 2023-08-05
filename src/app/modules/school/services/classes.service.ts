@@ -19,6 +19,10 @@ export class ClassesService {
     });
   }
 
+  editClass(id: number, _class:IClass): Observable<IClass>{
+    return this.http.put<IClass>(environment.apiUrl + 'classes/' + id, _class)
+  }
+
   createClass(_class: IClass): Observable<IClass> {
     return this.http.post<IClass>(environment.apiUrl + 'classes', _class);
   }

@@ -37,18 +37,7 @@
     </mat-form-field>
   </div>
   <div class="col-3">
-    <mat-form-field class="mb-2" *ngIf="isEditMode">
-      <mat-label>Tipos de ensino</mat-label>
-      <mat-select multiple formControlName="typeTeaching">
-        <mat-option *ngFor="let type of typeTeaching" [value]="type.id">
-          {{ type.name }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('typeTeaching')?.hasError('required')"
-        >Campo obrigatório</mat-error
-      >
-    </mat-form-field>
-    <div *ngIf="isReadOnlyMode">
+    <div>
       Tipos de ensino
       <ul>
         <li *ngFor="let type of form.get('typeTeaching')?.value">
@@ -58,18 +47,7 @@
     </div>
   </div>
   <div class="col-3">
-    <mat-form-field class="mb-2" *ngIf="isEditMode">
-      <mat-label>Turnos de funcionamento</mat-label>
-      <mat-select multiple formControlName="typeOpeningHours">
-        <mat-option *ngFor="let type of typeOpeningHours" [value]="type.id">
-          {{ type.name }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('typeOpeningHours')?.hasError('required')"
-        >Campo obrigatório</mat-error
-      >
-    </mat-form-field>
-    <div *ngIf="isReadOnlyMode">
+    <div >
       Turnos
       <ul>
         <li *ngFor="let type of form.get('typeOpeningHours')?.value">

@@ -80,7 +80,7 @@ export class SchoolDetailsComponent implements OnInit {
       ],
       directorName: [
         { value: null, disabled: this.isReadOnlyMode },
-        [Validators.required, Validators.pattern(/^[a-zA-Z]+(\s[a-zA-Z]+)+$/)],
+        [Validators.required, Validators.pattern(/^(?=.*[a-zA-ZÀ-ÖØ-öø-ÿ])(?=.*\s)[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/)],
       ],
       location: this._fb.group({
         cep: [
@@ -137,7 +137,7 @@ export class SchoolDetailsComponent implements OnInit {
   }
 
   getStudents(): void {
-    this._studentService.getStudents(this.school.id).subscribe({
+    this._studentService.getStudentsBySchoolId(this.school.id).subscribe({
       next: (res) => {
         this.students = res;
         this.qntForm.get('students')?.setValue(this.students.length);

@@ -8,7 +8,7 @@
         value=""
         icon="add"
         type="primary"
-        (clickEvent)="createStudent()"
+        (clickEvent)="createEditStudent()"
       ></default-button>
     </div>
   </div>
@@ -30,17 +30,12 @@
         <tr *ngFor="let student of students">
           <td>{{ student.name }}</td>
           <td>{{ student.age }}</td>
-          <td>{{ student.cpf }}</td>
+          <td>{{ student.cpf | mask: "000.000.000-00" }}</td>
           <td *ngIf="isEditMode">
             <div class="d-flex gap-2">
               <default-button
-                icon="visibility"
-                type="secondary"
-                (clickEvent)="viewStudent(student.id)"
-              ></default-button>
-              <default-button
                 icon="edit"
-                (clickEvent)="editStudent(student.id)"
+                (clickEvent)="createEditStudent(student.id)"
               ></default-button>
               <default-button
                 icon="delete"

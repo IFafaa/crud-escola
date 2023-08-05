@@ -1,57 +1,7 @@
 {
-  "schools": [
-    {
-      "name": "Escola Estadual Frei Egídio Parisi",
-      "typeInstitution": 0,
-      "typeTeaching": [
-        2,
-        3
-      ],
-      "typeOpeningHours": [
-        0,
-        1,
-        2
-      ],
-      "cnpj": "00042004000132",
-      "directorName": "Washington Ferreira Silvano",
-      "location": {
-        "cep": "24430200",
-        "street": "Rua Belo Horizonte",
-        "number": "244",
-        "neighborhood": "Porto da Madama",
-        "city": "São Gonçalo",
-        "state": "RJ"
-      },
-      "id": 1
-    }
-  ],
-  "classes": [
-    {
-      "typeTeaching": 2,
-      "series": 9,
-      "name": "A",
-      "typeOpeningHours": 0,
-      "idSchool": 1,
-      "id": 1
-    },
-    {
-      "typeTeaching": 2,
-      "series": 9,
-      "name": "V",
-      "typeOpeningHours": 0,
-      "idSchool": 1,
-      "id": 2
-    }
-  ],
-  "students": [
-    {
-      "id": 0,
-      "idClass": 0,
-      "idSchool": 0,
-      "name": "Fabrício",
-      "age": 14
-    }
-  ],
+  "schools": [],
+  "classes": [],
+  "students": [],
   "typeTeaching": [
     {
       "name": "Jardim de infância",

@@ -45,9 +45,9 @@
   </div>
   <div>
     <default-button
-      value="Cadastrar"
-      [disabled]="form.invalid"
-      (clickEvent)="create()"
+      [value]="isEdit ? 'Salvar' : 'Cadastrar'"
+      [disabled]="form.invalid && !form.dirty"
+      (clickEvent)="isEdit ? edit() : create()"
     ></default-button>
   </div>
 </div>
