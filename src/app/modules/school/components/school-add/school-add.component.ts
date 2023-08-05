@@ -6,6 +6,7 @@ import { CepService } from 'src/app/core/services/cep.service';
 import { ISchool } from '../../models/school.model';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'src/app/core/services/toastr.service';
+import { cpfCnpjValidator } from 'src/app/shared/validators/cpfCnpj.validator';
 
 @Component({
   selector: 'app-school-add',
@@ -50,7 +51,7 @@ export class SchoolAddComponent {
       ],
       cnpj: [
         { value: null, disabled: false },
-        [Validators.required, Validators.minLength(14)],
+        [Validators.required, Validators.minLength(14), cpfCnpjValidator()],
       ],
       directorName: [
         { value: null, disabled: false },

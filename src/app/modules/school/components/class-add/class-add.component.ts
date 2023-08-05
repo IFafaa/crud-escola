@@ -74,10 +74,6 @@ export class ClassAddComponent implements OnInit {
   selectTeachingChange(event: any) {
     this.form.get('series')?.disable();
     let control = this.form.get('typeTeaching');
-
-    console.log(event);
-    console.log(control?.value);
-
     if (control?.value !== null) {
       this.form.get('series')?.enable();
       this._schoolService.getSeries(control?.value).subscribe({
@@ -96,15 +92,15 @@ export class ClassAddComponent implements OnInit {
     this._schoolService.createClass(payload).subscribe({
       next: (res) => {
         this.close();
-        this._toastr.success("Classe cadastrada com sucesso!")
+        this._toastr.success('Classe cadastrada com sucesso!');
       },
       error: () => {
-        this._toastr.error("Houve um problema, tente novamente ou mais tarde")
-      }
+        this._toastr.error('Houve um problema, tente novamente ou mais tarde');
+      },
     });
   }
 
-  close(): void{
-    this._ref.close()
+  close(): void {
+    this._ref.close();
   }
 }

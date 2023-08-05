@@ -19,8 +19,6 @@ export class SchoolDetailsAddressComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    console.log('fooooooorm',this.form);
-
     this.getCep(this.form.get("cep")?.value)
   }
 

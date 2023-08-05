@@ -8,6 +8,7 @@ import { finalize } from 'rxjs';
 import { IClass } from '../../models/class.model';
 import { IStudent } from '../../models/students.model';
 import { ToastrService } from 'src/app/core/services/toastr.service';
+import { cpfCnpjValidator } from 'src/app/shared/validators/cpfCnpj.validator';
 
 @Component({
   selector: 'app-school-details',
@@ -66,7 +67,7 @@ export class SchoolDetailsComponent implements OnInit {
       ],
       cnpj: [
         { value: null, disabled: this.isReadOnlyMode },
-        [Validators.required, Validators.minLength(14)],
+        [Validators.required, Validators.minLength(14), cpfCnpjValidator()],
       ],
       directorName: [
         { value: null, disabled: this.isReadOnlyMode },
@@ -121,8 +122,6 @@ export class SchoolDetailsComponent implements OnInit {
     this._schoolService.getClasses(this.school.id).subscribe({
       next: (res) => {
         this.classes = res;
-        console.log('teste1111');
-
         this.qntForm.get("classes")?.setValue(this.classes.length)
       },
     });
@@ -132,8 +131,6 @@ export class SchoolDetailsComponent implements OnInit {
     this._schoolService.getStudents(this.school.id).subscribe({
       next: (res) => {
         this.students = res;
-        console.log('teste22222');
-
         this.qntForm.get("students")?.setValue(this.students.length)
       },
     });

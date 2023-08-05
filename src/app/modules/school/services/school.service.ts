@@ -53,8 +53,6 @@ export class SchoolService {
   }
 
   editSchool(id: number, school: ISchool): Observable<ISchool>{
-    console.log(id, school);
-
     return this.http.put<ISchool>(environment.apiUrl + 'schools/' + id, school)
   }
 
