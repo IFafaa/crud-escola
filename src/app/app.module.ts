@@ -1,5 +1,5 @@
 import { HeaderComponent } from './core/components/header/header.component';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomPaginationIntl } from './shared/config/custom.paginator.intl';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +37,11 @@ import { NgxMaskModule } from 'ngx-mask';
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerInterceptor,
       multi: true,
+    },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    {
+      provide: MatPaginatorIntl,
+      useValue: new CustomPaginationIntl().getCustomPaginationIntl(),
     },
   ],
   bootstrap: [AppComponent],

@@ -26,7 +26,9 @@
   </div>
 
   <div *ngIf="showFilter" class="card-default p-3 mx-auto mt-2 row">
-    <app-schools-filter (searchCallback)="getSchools($event)"></app-schools-filter>
+    <app-schools-filter
+      (searchCallback)="getSchools($event)"
+    ></app-schools-filter>
   </div>
 
   <div class="card-default mx-auto mt-2">
@@ -42,23 +44,48 @@
           </tr>
         </thead>
         <tbody>
-          <ng-container *ngIf="schools.length && statusList == ENUM_STATUS_LIST.IDLE">
-            <tr *ngFor="let school of schools">
+          <ng-container
+            *ngIf="schools.length && statusList == ENUM_STATUS_LIST.IDLE"
+          >
+            <tr
+              *ngFor="let school of schools; let i = index"
+              [paginacao]="{ indice: i, pagina: pageIndex, limitePagina: 5 }"
+            >
               <td>{{ school.name }}</td>
               <td>{{ school.location.neighborhood }}</td>
               <td>{{ formatSchoolType(school.typeInstitution) }}</td>
               <td>{{ school.directorName }}</td>
               <td>
                 <div class="d-flex gap-2 justify-content-center">
-                  <default-button icon="visibility" type="secondary" (clickEvent)="viewSchool(school.id)"></default-button>
-                  <default-button icon="edit" (clickEvent)="editSchool(school.id)"></default-button>
-                  <default-button icon="delete" type="cancel" (clickEvent)="deleteSchool(school.id)"></default-button>
+                  <default-button
+                    icon="visibility"
+                    type="secondary"
+                    (clickEvent)="viewSchool(school.id)"
+                  ></default-button>
+                  <default-button
+                    icon="edit"
+                    (clickEvent)="editSchool(school.id)"
+                  ></default-button>
+                  <default-button
+                    icon="delete"
+                    type="cancel"
+                    (clickEvent)="deleteSchool(school.id)"
+                  ></default-button>
                 </div>
               </td>
             </tr>
           </ng-container>
         </tbody>
       </table>
+      <div *ngIf="schools.length && statusList == ENUM_STATUS_LIST.IDLE">
+        <mat-paginator
+          [length]="schools.length"
+          [pageSize]="5"
+          (page)="pageIndex = $event.pageIndex"
+          [hidePageSize]="false"
+        >
+        </mat-paginator>
+      </div>
       <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
         <div class="p-5 d-flex w-100 justify-content-center">
           <span>Não foram encontrados registros</span>
@@ -66,7 +93,10 @@
       </ng-container>
       <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
         <div class="p-5 d-flex w-100 justify-content-center">
-          <span>Houve um problema ao realizar a consulta, tente novamente mais tarde</span>
+          <span
+            >Houve um problema ao realizar a consulta, tente novamente mais
+            tarde</span
+          >
         </div>
       </ng-container>
     </div>

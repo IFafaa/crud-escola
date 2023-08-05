@@ -20,9 +20,12 @@ export class StudentService {
     });
   }
 
-  getStudentsByClassId(idClass: number): Observable<IStudent[]> {
+  getStudentsByClassId(
+    idClass: number,
+    filter: IStudent | {} = {}
+  ): Observable<IStudent[]> {
     return this.http.get<IStudent[]>(environment.apiUrl + 'students', {
-      params: { idClass: idClass },
+      params: { ...filter, idClass: idClass },
     });
   }
 

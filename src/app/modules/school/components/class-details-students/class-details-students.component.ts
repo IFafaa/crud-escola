@@ -1,3 +1,4 @@
+import { IClass } from './../../models/class.model';
 import { StudentService } from './../../services/student.service';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
@@ -8,11 +9,13 @@ import {
   MatDialogConfig,
 } from '@angular/material/dialog';
 import { StudentFormComponent } from '../student-form/student-form.component';
-import { IClass } from '../../models/class.model';
 import { ISchool } from '../../models/school.model';
 import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
 import { finalize } from 'rxjs';
 import { ToastrService } from 'src/app/core/services/toastr.service';
+import { Export } from 'src/app/core/helpers/export';
+import { ClassesService } from '../../services/classes.service';
+import { Formatters } from 'src/app/core/helpers/formatters';
 
 @Component({
   selector: 'app-class-details-students',
@@ -24,7 +27,11 @@ export class ClassDetailsStudentsComponent implements OnInit {
   @Input() isReadOnlyMode!: boolean;
   @Input() schoolId!: number;
   @Input() classId!: number;
+  @Input() class!: IClass;
   students: IStudent[] = [];
+  pageIndex: number = 0
+
+  showFilter: boolean = false;
 
   ENUM_STATUS_LIST = ENUM_STATUS_LIST;
   statusList = ENUM_STATUS_LIST.IDLE;
@@ -32,6 +39,7 @@ export class ClassDetailsStudentsComponent implements OnInit {
   constructor(
     private readonly _matDialog: MatDialog,
     private readonly _studentsService: StudentService,
+    private readonly _classesService: ClassesService,
     private readonly _confirmDialog: ConfirmDialogService,
     private readonly _toastr: ToastrService
   ) {}
@@ -52,7 +60,7 @@ export class ClassDetailsStudentsComponent implements OnInit {
       data: {
         schoolId: this.schoolId,
         classId: this.classId,
-        studentId: idStudent
+        studentId: idStudent,
       },
     };
     this._matDialog
@@ -63,9 +71,9 @@ export class ClassDetailsStudentsComponent implements OnInit {
       });
   }
 
-  getStudents(): void {
+  getStudents(filter: IStudent | {} = {}): void {
     this.statusList = ENUM_STATUS_LIST.IDLE;
-    this._studentsService.getStudentsByClassId(this.classId).subscribe({
+    this._studentsService.getStudentsByClassId(this.classId, filter).subscribe({
       next: (res) => {
         this.students = res;
         if (!this.students.length) {
@@ -92,4 +100,18 @@ export class ClassDetailsStudentsComponent implements OnInit {
         });
     });
   }
+
+  exportStudents(): void {
+    const array = this.students.map((student) => ({
+      name: student.name,
+      age: student.age,
+      cpf: student.cpf,
+    }));
+
+    const filename = Formatters.formatClassName(this.class.name, this.class.series);
+    Export.exportToCsv(array, filename);
+  }
+
+
+
 }

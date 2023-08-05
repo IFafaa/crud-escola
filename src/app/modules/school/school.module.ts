@@ -23,6 +23,9 @@ import { StudentFormComponent } from './components/student-form/student-form.com
 import { SchoolsFilterComponent } from './components/schools-filter/schools-filter.component';
 import { Filters } from 'src/app/core/helpers/filters';
 import { ClassFilterComponent } from './components/class-filter/class-filter.component';
+import { StudentFilterComponent } from './components/student-filter/student-filter.component';
+import { Export } from 'src/app/core/helpers/export';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const routes: Routes = [
   {
@@ -55,6 +58,7 @@ const routes: Routes = [
     StudentFormComponent,
     SchoolsFilterComponent,
     ClassFilterComponent,
+    StudentFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -66,7 +70,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     NgxMaskModule.forChild(),
+    MatPaginatorModule
   ],
-  providers: [Formatters, Filters],
+  providers: [Formatters, Filters, Export],
 })
 export class SchoolModule {}

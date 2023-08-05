@@ -24,7 +24,7 @@ export class SchoolListComponent implements OnInit {
   statusList: ENUM_STATUS_LIST = ENUM_STATUS_LIST.IDLE;
 
   showFilter: boolean = false;
-
+  pageIndex: number = 0
   constructor(
     private readonly _router: Router,
     private readonly _matDialog: MatDialog,

@@ -40,7 +40,10 @@
       <ng-container
         *ngIf="classes.length && statusList == ENUM_STATUS_LIST.IDLE"
       >
-        <tr *ngFor="let class of classes">
+        <tr
+          *ngFor="let class of classes; let i = index"
+          [paginacao]="{ indice: i, pagina: pageIndex, limitePagina: 5 }"
+        >
           <td>{{ formatClassName(class.name, class.series) }}</td>
           <td>{{ formatTypeTeaching(class.typeTeaching) }}</td>
           <td>{{ formatOpeningHours(class.typeOpeningHours) }}</td>
@@ -68,6 +71,15 @@
       </ng-container>
     </tbody>
   </table>
+  <div *ngIf="classes.length && statusList == ENUM_STATUS_LIST.IDLE">
+    <mat-paginator
+      [length]="classes.length"
+      [pageSize]="5"
+      (page)="pageIndex = $event.pageIndex"
+      [hidePageSize]="false"
+    >
+    </mat-paginator>
+  </div>
   <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
     <div class="p-5 d-flex w-100 justify-content-center">
       <span>Não foram encontrados registros</span>
@@ -76,7 +88,8 @@
   <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
     <div class="p-5 d-flex w-100 justify-content-center">
       <span
-        >Houve um problema ao realizar a consulta, tente novamente mais tarde</span
+        >Houve um problema ao realizar a consulta, tente novamente mais
+        tarde</span
       >
     </div>
   </ng-container>

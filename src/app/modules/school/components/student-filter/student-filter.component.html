@@ -1,0 +1,25 @@
+<div class="row" [formGroup]="form">
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Idade</mat-label>
+      <input matInput formControlName="age" mask="99"/>
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpf" mask="999.999.999-99"/>
+    </mat-form-field>
+  </div>
+  <div class="col-12">
+    <div class="d-flex justify-content-end">
+      <default-button value="Buscar" icon="search" (clickEvent)="search()"></default-button>
+    </div>
+  </div>
+</div>

@@ -2,8 +2,24 @@
   <div>
     <h5>Estudantes</h5>
   </div>
-  <div class="d-flex" *ngIf="isEditMode">
+  <div class="d-flex gap-2">
     <div>
+      <default-button
+        value=""
+        icon="download"
+        type="primary"
+        (clickEvent)="exportStudents()"
+      ></default-button>
+    </div>
+    <div>
+      <default-button
+        value=""
+        icon="search"
+        type="secondary"
+        (clickEvent)="showFilter = !showFilter"
+      ></default-button>
+    </div>
+    <div *ngIf="isEditMode">
       <default-button
         value=""
         icon="add"
@@ -13,6 +29,13 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="showFilter" class="card-default p-3 mx-auto mt-2 row">
+  <app-student-filter
+    (searchCallback)="getStudents($event)"
+  ></app-student-filter>
+</div>
+
 <div class="table-container">
   <table>
     <thead>
@@ -27,10 +50,13 @@
       <ng-container
         *ngIf="students.length && statusList == ENUM_STATUS_LIST.IDLE"
       >
-        <tr *ngFor="let student of students">
+        <tr
+          *ngFor="let student of students; let i = index"
+          [paginacao]="{ indice: i, pagina: pageIndex, limitePagina: 5 }"
+        >
           <td>{{ student.name }}</td>
           <td>{{ student.age }}</td>
-          <td>{{ student.cpf | mask: "000.000.000-00" }}</td>
+          <td>{{ student.cpf | mask : "000.000.000-00" }}</td>
           <td *ngIf="isEditMode">
             <div class="d-flex gap-2 justify-content-center">
               <default-button
@@ -48,6 +74,15 @@
       </ng-container>
     </tbody>
   </table>
+  <div *ngIf="students.length && statusList == ENUM_STATUS_LIST.IDLE">
+    <mat-paginator
+      [length]="students.length"
+      [pageSize]="5"
+      (page)="pageIndex = $event.pageIndex"
+      [hidePageSize]="false"
+    >
+    </mat-paginator>
+  </div>
   <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
     <div class="p-5 d-flex w-100 justify-content-center">
       <span>Não foram encontrados registros</span>
@@ -56,7 +91,8 @@
   <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
     <div class="p-5 d-flex w-100 justify-content-center">
       <span
-        >Houve um problema ao realizar a consulta, tente novamente mais tarde</span
+        >Houve um problema ao realizar a consulta, tente novamente mais
+        tarde</span
       >
     </div>
   </ng-container>
