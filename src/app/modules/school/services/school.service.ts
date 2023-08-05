@@ -1,9 +1,9 @@
+import { ISchool } from './../models/school.model';
 import { IClass } from './../models/class.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 import { ISelect } from '../models/select.model';
-import { ISchool } from '../models/school.model';
 import { environment } from 'src/environment/environment';
 import { IStudent } from '../models/students.model';
 import { ISerie } from '../models/serie.model';
@@ -52,6 +52,12 @@ export class SchoolService {
     return this.http.delete<ISchool>(environment.apiUrl + 'schools/' + id);
   }
 
+  editSchool(id: number, school: ISchool): Observable<ISchool>{
+    console.log(id, school);
+
+    return this.http.put<ISchool>(environment.apiUrl + 'schools/' + id, school)
+  }
+
   getClasses(idSchool: number): Observable<IClass[]> {
     return this.http.get<IClass[]>(environment.apiUrl + 'classes', {
       params: { idSchool: idSchool },
@@ -60,6 +66,10 @@ export class SchoolService {
 
   createClass(_class: IClass): Observable<IClass> {
     return this.http.post<IClass>(environment.apiUrl + 'classes', _class);
+  }
+
+  deleteClass(id: number): Observable<IClass>{
+    return this.http.delete<IClass>(environment.apiUrl + 'classes/' + id)
   }
 
   getStudents(idSchool: number): Observable<IStudent[]> {

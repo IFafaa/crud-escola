@@ -70,7 +70,7 @@
       >
     </mat-form-field>
     <div *ngIf="isReadOnlyMode">
-      Tipos de ensino
+      Turnos
       <ul>
         <li *ngFor="let type of form.get('typeOpeningHours')?.value">
           {{ formatOpeningHours(type) }}

@@ -26,7 +26,7 @@
       "id": 1
     },
     {
-      "name": "teste",
+      "name": "testeeeeeeeee",
       "typeInstitution": 0,
       "typeTeaching": [
         0,
@@ -36,18 +36,13 @@
       ],
       "typeOpeningHours": [
         0,
-        1,
-        2
+        1
       ],
-      "cnpj": "23121231231321",
+      "cnpj": "21123123123213",
       "directorName": "teste teste",
       "location": {
-        "cep": "38407744",
-        "street": "Rua Providence",
-        "number": "233",
-        "neighborhood": "Novo Mundo",
-        "city": "Uberlândia",
-        "state": "MG"
+        "cep": "38400066",
+        "number": "24442"
       },
       "id": 2
     }
@@ -60,38 +55,6 @@
       "series": "2º",
       "typeTeaching": 1,
       "typeOpeningHours": 1
-    },
-    {
-      "typeTeaching": 0,
-      "series": 1,
-      "name": "A",
-      "typeOpeningHours": 0,
-      "idSchool": 2,
-      "id": 2
-    },
-    {
-      "typeTeaching": 1,
-      "series": 5,
-      "name": "A",
-      "typeOpeningHours": 0,
-      "idSchool": 2,
-      "id": 3
-    },
-    {
-      "typeTeaching": 3,
-      "series": 14,
-      "name": "A",
-      "typeOpeningHours": 0,
-      "idSchool": 2,
-      "id": 4
-    },
-    {
-      "typeTeaching": 3,
-      "series": 15,
-      "name": "A",
-      "typeOpeningHours": 0,
-      "idSchool": 2,
-      "id": 5
     }
   ],
   "students": [

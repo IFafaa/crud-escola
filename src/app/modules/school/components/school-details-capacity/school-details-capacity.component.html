@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-12">
+  <div class="col-12" [formGroup]="qntForm">
     <mat-form-field class="mb-2">
       <mat-label>Quantidade de Classes</mat-label>
-      <input matInput [formControl]="qntClassesControl"/>
+      <input matInput formControlName="classes" readonly/>
     </mat-form-field>
     <mat-form-field class="mb-2">
       <mat-label>Quantidade de Alunos</mat-label>
-      <input matInput [formControl]="qntStudentsControl"/>
+      <input matInput formControlName="students" readonly/>
     </mat-form-field>
   </div>
 </div>

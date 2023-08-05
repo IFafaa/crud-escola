@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
 import { ISchool } from '../../models/school.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { IClass } from '../../models/class.model';
 import { IStudent } from '../../models/students.model';
+import { ToastrService } from 'src/app/core/services/toastr.service';
 
 @Component({
   selector: 'app-school-details',
@@ -24,12 +25,14 @@ export class SchoolDetailsComponent implements OnInit {
   students!: IStudent[];
 
   schoolForm!: FormGroup;
+  qntForm!: FormGroup
 
   constructor(
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
     private readonly _schoolService: SchoolService,
-    private readonly _fb: FormBuilder
+    private readonly _fb: FormBuilder,
+    private readonly _toastr: ToastrService
   ) {
     this.mode = <ENUM_MODE_TYPE>this._route.snapshot.paramMap.get('method');
     this.escolaId = Number(this._route.snapshot.paramMap.get('id'));
@@ -40,6 +43,7 @@ export class SchoolDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getSchool();
     this.createSchoolForm();
+    this.createQuantityForm();
   }
 
   createSchoolForm(): void {
@@ -85,6 +89,13 @@ export class SchoolDetailsComponent implements OnInit {
     });
   }
 
+  createQuantityForm(){
+    this.qntForm = this._fb.group({
+      classes: [null],
+      students: [null],
+    })
+  }
+
   get addressForm(): FormGroup {
     return this.schoolForm.get('location') as FormGroup;
   }
@@ -110,6 +121,9 @@ export class SchoolDetailsComponent implements OnInit {
     this._schoolService.getClasses(this.school.id).subscribe({
       next: (res) => {
         this.classes = res;
+        console.log('teste1111');
+
+        this.qntForm.get("classes")?.setValue(this.classes.length)
       },
     });
   }
@@ -118,9 +132,24 @@ export class SchoolDetailsComponent implements OnInit {
     this._schoolService.getStudents(this.school.id).subscribe({
       next: (res) => {
         this.students = res;
+        console.log('teste22222');
+
+        this.qntForm.get("students")?.setValue(this.students.length)
       },
     });
   }
 
-  registerClass(): void {}
+  saveSchool(): void {
+    const payload: ISchool = this.schoolForm.value;
+    this._schoolService.editSchool(this.school.id, payload).subscribe({
+      next: (res) => {
+        this._toastr.success('Dados da escola editados com sucesso!');
+        this._router.navigate(['/escolas']);
+      },
+    });
+  }
+
+  back(): void {
+    this._router.navigate(['/escolas']);
+  }
 }

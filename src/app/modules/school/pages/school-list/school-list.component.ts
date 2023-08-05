@@ -11,6 +11,7 @@ import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
 import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
 import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
 import { Formatters } from 'src/app/core/helpers/formatters';
+import { ToastrService } from 'src/app/core/services/toastr.service';
 
 @Component({
   selector: 'app-school-list',
@@ -25,10 +26,11 @@ export class SchoolListComponent implements OnInit {
   showFilter: boolean = false;
   filter: FormControl = new FormControl(null);
   constructor(
-    private _router: Router,
-    private _matDialog: MatDialog,
-    private _schoolService: SchoolService,
-    private _confirmDialog: ConfirmDialogService
+    private readonly _router: Router,
+    private readonly _matDialog: MatDialog,
+    private readonly _schoolService: SchoolService,
+    private readonly _confirmDialog: ConfirmDialogService,
+    private readonly _toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -85,7 +87,7 @@ export class SchoolListComponent implements OnInit {
         .pipe(finalize(() => this.getSchools()))
         .subscribe({
           next: (res) => {
-            console.log(res);
+            this._toastr.success("Escola deletada com sucesso!")
           },
         });
     });

@@ -32,9 +32,13 @@
         <div class="card-default p-3">
           <app-school-details-capacity
             *ngIf="classes && students && school"
-            [classes]="classes"
-            [students]="students"
+            [qntForm]="qntForm"
           ></app-school-details-capacity>
+        </div>
+      </div>
+      <div class="col-12 mb-3" *ngIf="isEditMode">
+        <div class="d-flex justify-content-end">
+          <default-button value="Salvar" icon="add" type="secondary" (clickEvent)="saveSchool()" [disabled]="!schoolForm.dirty"></default-button>
         </div>
       </div>
       <div class="col-12 mb-3">
@@ -42,7 +46,15 @@
           <app-school-details-classes
             *ngIf="classes && students && school"
             [school]="school"
+            [isEditMode]="isEditMode"
+            [isReadOnlyMode]="isReadOnlyMode"
+            (changeClassCallback)="getStudents();getClasses()"
           ></app-school-details-classes>
+        </div>
+      </div>
+      <div class="col-12 mb-3" >
+        <div class="d-flex">
+          <default-button value="Voltar" icon="arrow_back" (clickEvent)="back()"></default-button>
         </div>
       </div>
     </div>

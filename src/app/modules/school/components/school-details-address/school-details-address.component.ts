@@ -14,19 +14,17 @@ export class SchoolDetailsAddressComponent implements OnInit {
   @Input() isEditMode!: boolean;
 
 
-  address: string = '';
   constructor(
-    private readonly _fb: FormBuilder,
     private readonly _cepService: CepService
     ) {}
 
   ngOnInit(): void {
+    console.log('fooooooorm',this.form);
+
+    this.getCep(this.form.get("cep")?.value)
   }
 
   getCep(cep: string): void {
-    this.form.get('number')?.disable();
-    this.form.get('number')?.setValue("");
-    this.address = '';
     if (cep.length < 8) return;
     let control = this.form.get('cep');
     control?.setErrors(null);
@@ -38,7 +36,6 @@ export class SchoolDetailsAddressComponent implements OnInit {
           return;
         }
         this.setLocation(res)
-        this.setAddress();
       },
     });
   }
@@ -50,13 +47,5 @@ export class SchoolDetailsAddressComponent implements OnInit {
       city: location.localidade,
       state: location.uf,
     });
-  }
-
-  setAddress(): void {
-    this.form.get('number')?.enable();
-    const formValue = this.form.value.location;
-    this.address = `${formValue.state}, ${formValue.city} - ${
-      formValue.neighborhood
-    }, ${formValue.street}, ${formValue.number || ''}`;
   }
 }

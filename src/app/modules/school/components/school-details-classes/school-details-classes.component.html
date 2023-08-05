@@ -2,7 +2,7 @@
   <div>
     <h5>Classes</h5>
   </div>
-  <div class="d-flex">
+  <div class="d-flex" *ngIf="isEditMode">
     <div>
       <default-button
         value=""
@@ -20,7 +20,7 @@
         <th>Nome</th>
         <th>Tipo de Ensino</th>
         <th>Turno</th>
-        <th>Ações</th>
+        <th *ngIf="isEditMode">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
           <td>{{ formatClassName(class.name, class.series) }}</td>
           <td>{{ formatTypeTeaching(class.typeTeaching) }}</td>
           <td>{{ formatOpeningHours(class.typeOpeningHours) }}</td>
-          <td>
+          <td *ngIf="isEditMode">
             <div class="d-flex gap-2">
               <default-button
                 icon="visibility"

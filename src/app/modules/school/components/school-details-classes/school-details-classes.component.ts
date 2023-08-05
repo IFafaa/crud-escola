@@ -1,6 +1,6 @@
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SchoolService } from './../../services/school.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { IClass } from '../../models/class.model';
 import { IStudent } from '../../models/students.model';
 import { ISchool } from '../../models/school.model';
@@ -8,6 +8,9 @@ import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
 import { Formatters } from 'src/app/core/helpers/formatters';
 import { ClassAddComponent } from '../class-add/class-add.component';
 import { ENUM_SERIES_TYPE } from 'src/app/shared/enums/series.type.enum';
+import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
+import { finalize } from 'rxjs';
+import { ToastrService } from 'src/app/core/services/toastr.service';
 
 @Component({
   selector: 'app-school-details-classes',
@@ -16,6 +19,9 @@ import { ENUM_SERIES_TYPE } from 'src/app/shared/enums/series.type.enum';
 })
 export class SchoolDetailsClassesComponent implements OnInit {
   @Input() school!: ISchool;
+  @Input() isReadOnlyMode!: boolean
+  @Input() isEditMode!: boolean
+  @Output() changeClassCallback: EventEmitter<null> = new EventEmitter()
 
   classes: IClass[] = [];
   ENUM_STATUS_LIST = ENUM_STATUS_LIST;
@@ -23,7 +29,9 @@ export class SchoolDetailsClassesComponent implements OnInit {
 
   constructor(
     private readonly _schoolService: SchoolService,
-    private readonly _matDialog: MatDialog
+    private readonly _matDialog: MatDialog,
+    private readonly _confirmDialog: ConfirmDialogService,
+    private readonly _toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +40,9 @@ export class SchoolDetailsClassesComponent implements OnInit {
 
   getClasses(): void {
     this.statusList = ENUM_STATUS_LIST.IDLE;
-    this._schoolService.getClasses(this.school.id).subscribe({
+    this._schoolService.getClasses(this.school.id)
+    .pipe(finalize(() => this.changeClassCallback.emit()))
+    .subscribe({
       next: (res) => {
         this.classes = res;
         if (!this.classes.length) {
@@ -57,7 +67,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
     return Formatters.formatClassName(className, series);
   }
 
-  createClass() {
+  createClass(): void {
     let dialogConfig = new MatDialogConfig();
     dialogConfig = {
       position: {
@@ -77,5 +87,18 @@ export class SchoolDetailsClassesComponent implements OnInit {
   }
   viewClass(id: number): void {}
   editClass(id: number): void {}
-  deleteClass(id: number): void {}
+  deleteClass(id: number): void {
+    const titleDialog = 'Deletar Classe';
+    const descDialog = 'Você realmente deseja deletar essa classe?';
+    this._confirmDialog.confirm(titleDialog, descDialog, () => {
+      this._schoolService
+        .deleteClass(id)
+        .pipe(finalize(() => this.getClasses()))
+        .subscribe({
+          next: (res) => {
+            this._toastr.success("Classe deletada com sucesso!")
+          },
+        });
+    });
+  }
 }

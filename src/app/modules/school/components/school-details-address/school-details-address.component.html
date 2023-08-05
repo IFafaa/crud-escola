@@ -35,11 +35,10 @@
   <div class="col-4">
     <mat-form-field class="mb-2">
       <mat-label>Número</mat-label>
-      <input matInput formControlName="number" maxlength="5" mask="99999" (input)="setAddress()"/>
+      <input matInput formControlName="number" maxlength="5" mask="99999"/>
       <mat-error *ngIf="form.get('number')?.hasError('required')"
         >Campo obrigatório</mat-error
       >
     </mat-form-field>
   </div>
 </form>
-<div class="col-12 text--little" *ngIf="address">{{address}}</div>
