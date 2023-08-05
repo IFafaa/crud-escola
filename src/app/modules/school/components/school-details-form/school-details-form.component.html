@@ -1,0 +1,81 @@
+<div class="row" [formGroup]="form">
+  <div class="col-7">
+    <mat-form-field class="mb-2">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name"/>
+      <mat-error *ngIf="form.get('name')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+      <mat-error *ngIf="form.get('name')?.hasError('pattern')"
+        >Digite apenas letras e espaços</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-5">
+    <mat-form-field class="mb-2">
+      <mat-label>Nome do diretor</mat-label>
+      <input matInput formControlName="directorName"/>
+      <mat-error *ngIf="form.get('directorName')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+      <mat-error *ngIf="form.get('directorName')?.hasError('pattern')"
+        >Digite um nome válido</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-3">
+    <mat-form-field class="mb-2">
+      <mat-label>Tipo de instituição</mat-label>
+      <mat-select formControlName="typeInstitution">
+        <mat-option *ngFor="let type of typeInstitution" [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('typeInstitution')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-3">
+    <mat-form-field class="mb-2">
+      <mat-label>Tipos de ensino</mat-label>
+      <mat-select multiple formControlName="typeTeaching">
+        <mat-option *ngFor="let type of typeTeaching" [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('typeTeaching')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-3">
+    <mat-form-field class="mb-2">
+      <mat-label>Turnos de funcionamento</mat-label>
+      <mat-select multiple formControlName="typeOpeningHours">
+        <mat-option
+          *ngFor="let type of typeOpeningHours"
+          [value]="type.id"
+        >
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="form.get('typeOpeningHours')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-3">
+    <mat-form-field class="mb-2">
+      <mat-label>CNPJ</mat-label>
+      <input matInput formControlName="cnpj" mask="00.000.000/0000-00" />
+      <mat-error *ngIf="form.get('cnpj')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+      <mat-error *ngIf="form.get('cnpj')?.hasError('minlength')"
+        >Digite um CNPJ válido</mat-error
+      >
+    </mat-form-field>
+  </div>
+</div>

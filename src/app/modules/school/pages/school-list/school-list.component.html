@@ -50,7 +50,7 @@
               <td>{{ school.directorName }}</td>
               <td>
                 <div class="d-flex gap-2">
-                  <default-button icon="visibility" type="secondary"></default-button>
+                  <default-button icon="visibility" type="secondary" (clickEvent)="viewSchool(school.id)"></default-button>
                   <default-button icon="edit" (clickEvent)="editSchool(school.id)"></default-button>
                   <default-button icon="delete" type="cancel" (clickEvent)="deleteSchool(school.id)"></default-button>
                 </div>

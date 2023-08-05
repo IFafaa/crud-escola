@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
 import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
+import { ENUM_MODE_TYPE } from 'src/app/shared/enums/mode.type.enum';
 
 @Component({
   selector: 'app-school-list',
@@ -94,6 +95,10 @@ export class SchoolListComponent implements OnInit {
   }
 
   editSchool(id: number): void {
-    this._router.navigate(["/escolas",id,"editar"])
+    this._router.navigate(["/escolas",id,ENUM_MODE_TYPE.EDIT])
+  }
+
+  viewSchool(id: number): void {
+    this._router.navigate(["/escolas",id,ENUM_MODE_TYPE.VIEW])
   }
 }

@@ -2,7 +2,18 @@
   <div class="mx-auto">
     <div class="d-flex justify-content-between align-items-center">
       <div>
-        <h4>Detalhe escolas</h4>
+        <h4>Detalhe escola</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card-default p-3 col-12 mb-3">
+        <app-school-details-form *ngIf="school" [isEditMode]="isEditMode" [isReadOnlyMode]="isReadOnlyMode" [form]="schoolForm"></app-school-details-form>
+      </div>
+      <div class="card-default p-3 col-6 mb-3">
+        <app-school-details-address *ngIf="school" [isEditMode]="isEditMode" [isReadOnlyMode]="isReadOnlyMode" [form]="addressForm"></app-school-details-address>
+      </div>
+      <div class="card-default p-3 col-6 mb-3">
+        <app-school-details-address *ngIf="school" [isEditMode]="isEditMode" [isReadOnlyMode]="isReadOnlyMode" [form]="addressForm"></app-school-details-address>
       </div>
     </div>
   </div>

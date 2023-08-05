@@ -1,0 +1,45 @@
+<form [formGroup]="form" class="row">
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>CEP</mat-label>
+      <input matInput formControlName="cep" mask="00000-000" (input)="getCep(form.get('cep')?.value)"/>
+      <mat-error *ngIf="form.get('cep')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+      <mat-error *ngIf="form.get('cep')?.hasError('minlength')"
+        >Digite um CEP válido</mat-error
+      >
+      <mat-error *ngIf="form.get('cep')?.hasError('invalidCep')"
+        >Digite um CEP válido</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Cidade</mat-label>
+      <input matInput formControlName="city"/>
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Estado</mat-label>
+      <input matInput formControlName="state"/>
+    </mat-form-field>
+  </div>
+  <div class="col-8">
+    <mat-form-field class="mb-2">
+      <mat-label>Logradouro</mat-label>
+      <input matInput formControlName="street"/>
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Número</mat-label>
+      <input matInput formControlName="number" maxlength="5" mask="99999" (input)="setAddress()"/>
+      <mat-error *ngIf="form.get('number')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+    </mat-form-field>
+  </div>
+</form>
+<div class="col-12 text--little" *ngIf="address">{{address}}</div>

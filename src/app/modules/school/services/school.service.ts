@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { ISelect } from '../models/select.model';
 import { ISchool } from '../models/school.model';
 import { environment } from 'src/environment/environment';
@@ -9,9 +9,7 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root',
 })
 export class SchoolService {
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
   typeInstitution(): Observable<ISelect[]> {
     return of([
@@ -68,15 +66,21 @@ export class SchoolService {
     ]);
   }
 
-  getSchools(): Observable<ISchool[]>{
-    return this.http.get<ISchool[]>(environment.apiUrl + 'schools')
+  getSchools(): Observable<ISchool[]> {
+    return this.http.get<ISchool[]>(environment.apiUrl + 'schools');
   }
 
-  createSchool(school: ISchool): Observable<ISchool>{
-    return this.http.post<ISchool>(environment.apiUrl + 'schools', school)
+  getSchoolById(id: number): Observable<ISchool> {
+    return this.http.get<ISchool[]>(environment.apiUrl + 'schools', {
+      params: { id: id },
+    }).pipe(map((school) => school[0]))
   }
 
-  deleteSchool(id: number): Observable<ISchool>{
-    return this.http.delete<ISchool>(environment.apiUrl + 'schools/' + id)
+  createSchool(school: ISchool): Observable<ISchool> {
+    return this.http.post<ISchool>(environment.apiUrl + 'schools', school);
+  }
+
+  deleteSchool(id: number): Observable<ISchool> {
+    return this.http.delete<ISchool>(environment.apiUrl + 'schools/' + id);
   }
 }

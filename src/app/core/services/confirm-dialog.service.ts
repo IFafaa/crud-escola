@@ -20,7 +20,7 @@ export class ConfirmDialogService {
   confirm(
     title:string,
     description:string,
-    accept: any,
+    accept: Function,
     confirmButtonText?: string,
     cancelButtonText?: string,
 
