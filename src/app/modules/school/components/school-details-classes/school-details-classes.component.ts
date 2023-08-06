@@ -41,7 +41,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if(this.school){
+    if (this.school) {
       this.getClasses();
     }
   }
@@ -90,8 +90,11 @@ export class SchoolDetailsClassesComponent implements OnInit {
     this._matDialog
       .open(ClassAddComponent, dialogConfig)
       .afterClosed()
-      .subscribe(() => {
-        this.getClasses();
+      .subscribe((created: boolean) => {
+        if (created) {
+          this.showFilter = false;
+          this.getClasses();
+        }
       });
   }
   viewClass(id: number): void {
@@ -120,7 +123,12 @@ export class SchoolDetailsClassesComponent implements OnInit {
     this._confirmDialog.confirm(titleDialog, descDialog, () => {
       this._classesService
         .deleteClass(id)
-        .pipe(finalize(() => this.getClasses()))
+        .pipe(
+          finalize(() => {
+            this.showFilter = false;
+            this.getClasses();
+          })
+        )
         .subscribe({
           next: (res) => {
             this._toastr.success('Classe deletada com sucesso!');

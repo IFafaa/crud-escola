@@ -49,8 +49,11 @@ export class SchoolListComponent implements OnInit {
     this._matDialog
       .open(SchoolAddComponent, dialogConfig)
       .afterClosed()
-      .subscribe(() => {
-        this.getSchools();
+      .subscribe((created: boolean) => {
+        if (created) {
+          this.showFilter = false;
+          this.getSchools();
+        }
       });
   }
 
@@ -79,7 +82,12 @@ export class SchoolListComponent implements OnInit {
     this._confirmDialog.confirm(titleDialog, descDialog, () => {
       this._schoolService
         .deleteSchool(id)
-        .pipe(finalize(() => this.getSchools()))
+        .pipe(
+          finalize(() => {
+            this.showFilter = false;
+            this.getSchools();
+          })
+        )
         .subscribe({
           next: (res) => {
             this._toastr.success('Escola deletada com sucesso!');

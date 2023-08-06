@@ -91,12 +91,12 @@ export class StudentFormComponent implements OnInit {
     this._studentService.editStudent(this.data.studentId!, payload).subscribe({
       next: (res) => {
         this._toastr.success('Estudante editado com sucesso!');
-        this.close();
+        this.close(true);
       },
     });
   }
 
-  close(): void {
-    this._ref.close();
+  close(created: boolean = false): void {
+    this._ref.close(created);
   }
 }

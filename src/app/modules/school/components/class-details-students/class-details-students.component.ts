@@ -66,8 +66,11 @@ export class ClassDetailsStudentsComponent implements OnInit {
     this._matDialog
       .open(StudentFormComponent, dialogConfig)
       .afterClosed()
-      .subscribe(() => {
-        this.getStudents();
+      .subscribe((created: boolean) => {
+        if (created) {
+          this.showFilter = false;
+          this.getStudents();
+        }
       });
   }
 
@@ -92,7 +95,12 @@ export class ClassDetailsStudentsComponent implements OnInit {
     this._confirmDialog.confirm(titleDialog, descDialog, () => {
       this._studentsService
         .deleteStudent(id)
-        .pipe(finalize(() => this.getStudents()))
+        .pipe(
+          finalize(() => {
+            this.showFilter = false;
+            this.getStudents();
+          })
+        )
         .subscribe({
           next: (res) => {
             this._toastr.success('Estudante deletado com sucesso!');

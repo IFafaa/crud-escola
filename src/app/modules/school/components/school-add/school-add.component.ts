@@ -143,7 +143,7 @@ export class SchoolAddComponent {
     const payload: ISchool = this.form.value;
     this._schoolService.createSchool(payload).subscribe({
       next: (res) => {
-        this.close();
+        this.close(true);
         this._toastr.success('Escola cadastrada com sucesso!');
       },
       error: () => {
@@ -152,7 +152,7 @@ export class SchoolAddComponent {
     });
   }
 
-  close() {
-    this._ref.close();
+  close(created: boolean = false): void {
+    this._ref.close(created);
   }
 }

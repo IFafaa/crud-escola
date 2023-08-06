@@ -93,7 +93,7 @@ export class ClassAddComponent implements OnInit {
     };
     this._classesService.createClass(payload).subscribe({
       next: (res) => {
-        this.close();
+        this.close(true);
         this._toastr.success('Classe cadastrada com sucesso!');
       },
       error: () => {
@@ -102,7 +102,7 @@ export class ClassAddComponent implements OnInit {
     });
   }
 
-  close(): void {
-    this._ref.close();
+  close(created: boolean = false): void {
+    this._ref.close(created);
   }
 }
