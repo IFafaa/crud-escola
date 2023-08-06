@@ -1,13 +1,19 @@
 <div class="p-3 content d-flex flex-column justify-content-between">
   <div>
-    <h4 class="mb-3">Cadastrar Estudante</h4>
+    <div class="d-flex justify-content-between">
+      <h4 class="mb-3">Cadastrar Estudante</h4>
+      <div>
+        <span class="material-symbols-outlined pointer" (click)="close()">
+          close
+        </span>
+      </div>
+    </div>
     <div>
       <div class="row" [formGroup]="form">
-
         <div class="col-12">
           <mat-form-field class="mb-2">
             <mat-label>Nome</mat-label>
-            <input matInput formControlName="name"/>
+            <input matInput formControlName="name" />
             <mat-error *ngIf="form.get('name')?.hasError('required')"
               >Campo obrigatório</mat-error
             >
@@ -19,7 +25,7 @@
         <div class="col-12">
           <mat-form-field class="mb-2">
             <mat-label>Idade</mat-label>
-            <input matInput formControlName="age" mask="00"/>
+            <input matInput formControlName="age" mask="00" />
             <mat-error *ngIf="form.get('age')?.hasError('required')"
               >Campo obrigatório</mat-error
             >
@@ -28,14 +34,18 @@
         <div class="col-12">
           <mat-form-field class="mb-2">
             <mat-label>CPF</mat-label>
-            <input matInput formControlName="cpf" mask="000.000.000-00"/>
+            <input matInput formControlName="cpf" mask="000.000.000-00" />
             <mat-error *ngIf="form.get('cpf')?.hasError('required')"
               >Campo obrigatório</mat-error
             >
             <mat-error *ngIf="form.get('cpf')?.hasError('minlength')"
               >Digite um CPF válido</mat-error
             >
-            <mat-error *ngIf="form.get('cpf')?.hasError('cpfCnpj') && !form.get('cpf')?.hasError('minlength')"
+            <mat-error
+              *ngIf="
+                form.get('cpf')?.hasError('cpfCnpj') &&
+                !form.get('cpf')?.hasError('minlength')
+              "
               >Digite um CPF válido</mat-error
             >
           </mat-form-field>
