@@ -1,5 +1,12 @@
-# Teste Angular Santander
-Este é um projeto Angular criado com o intuito de demonstrar as funcionalidades e a estrutura básica de um aplicativo Angular.
+# Teste Angular Escola
+## Objetivo
+
+A prefeitura de uma cidade no interior do país está com dificuldades para controlar suas
+escolas públicas. Já existe um controle feito em Excel para controle das escolas e suas
+turmas, porém, o cadastro está sempre obsoleto por não existir um sistema centralizado de
+controle destes alunos. A prefeitura então nos contratou para desenvolver um sistema online
+onde serão cadastradas as escolas públicas e suas respectivas turmas.
+
 
 ## Pré-requisitos
 Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
