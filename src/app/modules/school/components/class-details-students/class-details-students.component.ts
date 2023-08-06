@@ -95,7 +95,7 @@ export class ClassDetailsStudentsComponent implements OnInit {
         .pipe(finalize(() => this.getStudents()))
         .subscribe({
           next: (res) => {
-            this._toastr.success('Estudante deletada com sucesso!');
+            this._toastr.success('Estudante deletado com sucesso!');
           },
         });
     });
@@ -107,7 +107,6 @@ export class ClassDetailsStudentsComponent implements OnInit {
       age: student.age,
       cpf: student.cpf,
     }));
-
     const filename = Formatters.formatClassName(
       this.class.name,
       this.class.series
