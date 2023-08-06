@@ -29,6 +29,12 @@ Navegue até o diretório do projeto:
 cd crud-escola
 ```
 
+Altere o ambiente para o ambiente de desenvolvimento:
+
+```
+git checkout develop
+```
+
 Instale as dependências do projeto utilizando o npm (gerenciador de pacotes do Node.js):
 
 ```
@@ -81,7 +87,10 @@ A criação desses segmentos de pastas ajuda a manter uma estrutura organizada d
 
 ## Testes Unitários
 
-O projeto foi desenvolvido e projetado com cobertura de testes unitários em Jasmine 
+O projeto foi desenvolvido e projetado com cobertura de testes unitários em Jasmine com um coverage de pelo menos 85% ou mais em todos os COMPONENTES
+
+![image](https://github.com/IFafaa/crud-escola/assets/105167072/7f0df475-9b95-46c2-a980-713930d2864e)
+
 
 Para executar os testes e mostrar o coverage utilize o comando:
 
