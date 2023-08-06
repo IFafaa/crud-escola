@@ -13,7 +13,7 @@ export interface ISchool {
   location: ILocation;
 }
 
-interface ILocation {
+export interface ILocation {
   cep: string;
   street: string;
   number: string;

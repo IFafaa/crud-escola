@@ -62,7 +62,7 @@ describe('ClassFilterComponent', () => {
     expect(component.form.get('series')?.disabled).toBeTruthy();
   });
 
-  it('should get traching', () => {
+  it('should get teaching', () => {
     const spy = spyOn(schoolService, 'typeTeaching').and.returnValue(
       of(select_mock)
     );

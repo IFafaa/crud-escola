@@ -155,7 +155,7 @@ export class SchoolDetailsComponent implements OnInit {
     this._schoolService.editSchool(this.school.id, payload).subscribe({
       next: (res) => {
         this._toastr.success('Dados da escola editados com sucesso!');
-        this._router.navigate(['/escolas']);
+        this.back()
       },
     });
   }

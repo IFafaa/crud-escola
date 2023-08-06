@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { SchoolAddComponent } from '../../components/school-add/school-add.component';
 import { ISchool } from '../../models/school.model';
 import { ENUM_SCHOOL_TYPE } from 'src/app/shared/enums/school-type.enum';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
 import { ConfirmDialogService } from 'src/app/core/services/confirm-dialog.service';
@@ -30,8 +29,7 @@ export class SchoolListComponent implements OnInit {
     private readonly _matDialog: MatDialog,
     private readonly _schoolService: SchoolService,
     private readonly _confirmDialog: ConfirmDialogService,
-    private readonly _toastr: ToastrService,
-    private readonly _fb: FormBuilder
+    private readonly _toastr: ToastrService
   ) {}
 
   ngOnInit(): void {

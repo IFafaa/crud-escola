@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISchool } from '../../models/school.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CepService } from 'src/app/core/services/cep.service';
 
 @Component({
@@ -13,14 +13,26 @@ export class SchoolDetailsAddressComponent implements OnInit {
   @Input() isReadOnlyMode!: boolean;
   @Input() isEditMode!: boolean;
 
-  constructor(private readonly _cepService: CepService) {}
+  constructor(private readonly _cepService: CepService) {
+    // TO TEST
+    if (!this.form) {
+      this.form = new FormGroup({
+        number: new FormControl(null),
+        cep: new FormControl(null),
+        street: new FormControl(null),
+        neighborhood: new FormControl(null),
+        city: new FormControl(null),
+        state: new FormControl(null),
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.getCep(this.form.get('cep')?.value);
   }
 
   getCep(cep: string): void {
-    if (cep.length < 8) return;
+    if (!cep || typeof cep !== 'string' || cep.length < 8) return;
     let control = this.form.get('cep');
     control?.setErrors(null);
     this._cepService.getCep(cep).subscribe({

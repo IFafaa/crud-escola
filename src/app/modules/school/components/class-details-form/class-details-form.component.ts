@@ -1,7 +1,5 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { IClass } from '../../models/class.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ISchool } from '../../models/school.model';
 import { ISelect } from '../../models/select.model';
 import { ISerie } from '../../models/serie.model';
@@ -22,10 +20,18 @@ export class ClassDetailsFormComponent implements OnInit {
 
   constructor(
     private readonly _schoolService: SchoolService,
-    private readonly _seriesService: SeriesService,
-    private readonly _fb: FormBuilder,
-    private readonly _toastr: ToastrService
-  ) {}
+    private readonly _seriesService: SeriesService
+  ) {
+    // TO TEST
+    if (!this.form) {
+      this.form = new FormGroup({
+        typeTeaching: new FormControl(null),
+        series: new FormControl(null),
+        name: new FormControl(null),
+        typeOpeningHours: new FormControl(null),
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.getTeaching();

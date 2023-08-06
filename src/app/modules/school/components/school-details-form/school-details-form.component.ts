@@ -1,11 +1,8 @@
 import { Formatters } from './../../../../core/helpers/formatters';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { CepService } from 'src/app/core/services/cep.service';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ISelect } from '../../models/select.model';
 import { SchoolService } from '../../services/school.service';
-import { ISchool } from '../../models/school.model';
 import { ENUM_TEACHING_TYPE } from 'src/app/shared/enums/teaching-type.enum';
 import { ENUM_OPENING_HOURS_TYPE } from 'src/app/shared/enums/opening-hours-type.enum';
 
@@ -27,11 +24,28 @@ export class SchoolDetailsFormComponent implements OnInit {
 
   constructor(
     private readonly _schoolService: SchoolService,
-    private readonly _fb: FormBuilder,
-    private readonly _cepService: CepService,
-    private readonly _toastr: ToastrService,
     public readonly Formatters: Formatters
-  ) {}
+  ) {
+    // TO TEST
+    if (!this.form) {
+      this.form = new FormGroup({
+        name: new FormControl(''),
+        typeInstitution: new FormControl(''),
+        typeTeaching: new FormControl(''),
+        typeOpeningHours: new FormControl(''),
+        cnpj: new FormControl(''),
+        directorName: new FormControl(''),
+        location: new FormGroup({
+          cep: new FormControl(''),
+          street: new FormControl(''),
+          number: new FormControl(''),
+          neighborhood: new FormControl(''),
+          city: new FormControl(''),
+          state: new FormControl(''),
+        }),
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.getTypeInstitution();

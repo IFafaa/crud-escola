@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SpinnerInterceptor } from './core/interceptors/spinner.interceptor';
-import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +24,6 @@ import { CustomPaginationIntl } from './shared/config/custom.paginator.intl';
     NgxSpinnerModule,
     HttpClientModule,
     MatDialogModule,
-    ToastrModule.forRoot(),
     HeaderComponent,
     MatSelectModule,
     ReactiveFormsModule,

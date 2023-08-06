@@ -1,8 +1,6 @@
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { SchoolService } from './../../services/school.service';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { IClass } from '../../models/class.model';
-import { IStudent } from '../../models/students.model';
 import { ISchool } from '../../models/school.model';
 import { ENUM_STATUS_LIST } from 'src/app/shared/enums/status-list.enum';
 import { Formatters } from 'src/app/core/helpers/formatters';
@@ -35,7 +33,6 @@ export class SchoolDetailsClassesComponent implements OnInit {
   statusList: ENUM_STATUS_LIST = ENUM_STATUS_LIST.IDLE;
 
   constructor(
-    private readonly _schoolService: SchoolService,
     private readonly _classesService: ClassesService,
     private readonly _matDialog: MatDialog,
     private readonly _confirmDialog: ConfirmDialogService,
@@ -44,7 +41,9 @@ export class SchoolDetailsClassesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getClasses();
+    if(this.school){
+      this.getClasses();
+    }
   }
 
   getClasses(filters: IClass | {} = {}): void {
