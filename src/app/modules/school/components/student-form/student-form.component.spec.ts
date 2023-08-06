@@ -19,7 +19,7 @@ import { ToastrService } from 'src/app/core/services/toastr.service';
 import { student_mock, students_mock } from 'src/app/core/mocks/student.mock';
 import { of } from 'rxjs';
 
-fdescribe('StudentFormComponent', () => {
+describe('StudentFormComponent', () => {
   let component: StudentFormComponent;
   let fixture: ComponentFixture<StudentFormComponent>;
   let studentService: StudentService;
@@ -70,9 +70,11 @@ fdescribe('StudentFormComponent', () => {
   });
 
   it('should get student case 1', () => {
+    const spy = spyOn(studentService, 'getStudentsById').and.returnValue(of(student_mock))
     component.isCreate = true
     component.getStudent();
     fixture.detectChanges();
+    expect(spy).not.toHaveBeenCalled()
   });
 
   it('should get student case 2', () => {
