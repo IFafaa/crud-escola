@@ -2,7 +2,12 @@
   <div class="col-12 col-sm-4">
     <mat-form-field class="mb-2">
       <mat-label>CEP</mat-label>
-      <input matInput formControlName="cep" mask="00000-000" (input)="getCep(form.get('cep')?.value)"/>
+      <input
+        matInput
+        formControlName="cep"
+        mask="00000-000"
+        (input)="getCep(form.get('cep')?.value)"
+      />
       <mat-error *ngIf="form.get('cep')?.hasError('required')"
         >Campo obrigatório</mat-error
       >
@@ -17,25 +22,25 @@
   <div class="col-6 col-sm-4">
     <mat-form-field class="mb-2">
       <mat-label>Cidade</mat-label>
-      <input matInput formControlName="city" readonly/>
+      <input matInput formControlName="city" readonly />
     </mat-form-field>
   </div>
   <div class="col-6 col-sm-4">
     <mat-form-field class="mb-2">
       <mat-label>Estado</mat-label>
-      <input matInput formControlName="state" readonly/>
+      <input matInput formControlName="state" readonly />
     </mat-form-field>
   </div>
   <div class="col-12 col-sm-8">
     <mat-form-field class="mb-2">
       <mat-label>Logradouro</mat-label>
-      <input matInput formControlName="street" readonly/>
+      <input matInput formControlName="street" readonly />
     </mat-form-field>
   </div>
   <div class="col-12 col-sm-4">
     <mat-form-field class="mb-2">
       <mat-label>Número</mat-label>
-      <input matInput formControlName="number" maxlength="5" mask="99999"/>
+      <input matInput formControlName="number" maxlength="5" mask="99999" />
       <mat-error *ngIf="form.get('number')?.hasError('required')"
         >Campo obrigatório</mat-error
       >

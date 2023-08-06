@@ -18,7 +18,7 @@ export class ClassFilterComponent implements OnInit {
 
   typeTeaching: ISelect[] = [];
   typeOpeningHours: ISelect[] = [];
-  series: ISelect[] = []
+  series: ISelect[] = [];
 
   constructor(
     private readonly _fb: FormBuilder,
@@ -69,7 +69,6 @@ export class ClassFilterComponent implements OnInit {
       });
     }
   }
-
 
   search(): void {
     const filters: IClass = Filters.adjustObjLike(

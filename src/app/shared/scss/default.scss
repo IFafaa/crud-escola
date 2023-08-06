@@ -1,4 +1,4 @@
-.card-default{
+.card-default {
   background-color: var(--white);
   border-radius: 6px;
 }
@@ -22,12 +22,13 @@ thead {
   color: var(--white);
 }
 
-th, td {
+th,
+td {
   padding: 18px 15px;
   text-align: left;
 }
 
-td{
+td {
   padding: 30px 15px;
 }
 
@@ -43,6 +44,6 @@ tbody tr:hover {
   background-color: #bbbbbb;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }

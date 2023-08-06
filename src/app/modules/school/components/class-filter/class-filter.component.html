@@ -2,13 +2,16 @@
   <div class="col-12 col-sm-6 col-lg-3">
     <mat-form-field class="mb-2">
       <mat-label>Nome (Letra)</mat-label>
-      <input matInput formControlName="name" maxlength="1"/>
+      <input matInput formControlName="name" maxlength="1" />
     </mat-form-field>
   </div>
   <div class="col-12 col-sm-6 col-lg-3">
     <mat-form-field class="mb-2">
       <mat-label>Tipo de ensino</mat-label>
-      <mat-select formControlName="typeTeaching" (selectionChange)="selectTeachingChange()">
+      <mat-select
+        formControlName="typeTeaching"
+        (selectionChange)="selectTeachingChange()"
+      >
         <mat-option [value]="null">--</mat-option>
         <mat-option *ngFor="let type of typeTeaching" [value]="type.id">
           {{ type.name }}
@@ -41,7 +44,11 @@
 
   <div class="col-12">
     <div class="d-flex justify-content-end">
-      <default-button value="Buscar" icon="search" (clickEvent)="search()"></default-button>
+      <default-button
+        value="Buscar"
+        icon="search"
+        (clickEvent)="search()"
+      ></default-button>
     </div>
   </div>
 </div>

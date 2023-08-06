@@ -27,7 +27,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
   @Input() mode!: ENUM_MODE_TYPE;
   @Output() changeClassCallback: EventEmitter<null> = new EventEmitter();
 
-  pageIndex: number = 0
+  pageIndex: number = 0;
   showFilter: boolean = false;
 
   classes: IClass[] = [];

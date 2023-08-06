@@ -33,7 +33,10 @@ export class Formatters {
     return FORMATTER_SCHOOL_TYPE[schoolType];
   }
 
-  public static formatClassName(className: string, series: ENUM_SERIES_TYPE): string {
+  public static formatClassName(
+    className: string,
+    series: ENUM_SERIES_TYPE
+  ): string {
     const FORMATTER_SERIE_TYPE = {
       0: 'Berçário ou Creche',
       1: 'Maternal I',
@@ -53,6 +56,6 @@ export class Formatters {
       15: '3º Ano',
     };
 
-    return FORMATTER_SERIE_TYPE[series] + " - " + className;
+    return FORMATTER_SERIE_TYPE[series] + ' - ' + className;
   }
 }

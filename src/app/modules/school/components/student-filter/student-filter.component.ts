@@ -32,5 +32,4 @@ export class StudentFilterComponent implements OnInit {
     );
     this.searchCallback.emit(filters);
   }
-
 }

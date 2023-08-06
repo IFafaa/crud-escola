@@ -1,13 +1,12 @@
-header{
+header {
   background-color: var(--primary);
 }
 
-.navigation{
-  &--item{
+.navigation {
+  &--item {
     cursor: pointer;
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
 }
-

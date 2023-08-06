@@ -58,7 +58,12 @@ export class SchoolAddComponent {
       ],
       directorName: [
         { value: null, disabled: false },
-        [Validators.required, Validators.pattern(/^(?=.*[a-zA-ZÀ-ÖØ-öø-ÿ])(?=.*\s)[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/)],
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*[a-zA-ZÀ-ÖØ-öø-ÿ])(?=.*\s)[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/
+          ),
+        ],
       ],
       location: this._fb.group({
         cep: [

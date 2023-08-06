@@ -29,10 +29,8 @@ export class SchoolService {
   //---------------------------------------------------------------------------------------------------------------------
 
   getSchools(filters: any): Observable<ISchool[]> {
-    console.log(filters);
-
     return this.http.get<ISchool[]>(environment.apiUrl + 'schools', {
-      params: filters
+      params: filters,
     });
   }
 
@@ -55,6 +53,4 @@ export class SchoolService {
   editSchool(id: number, school: ISchool): Observable<ISchool> {
     return this.http.put<ISchool>(environment.apiUrl + 'schools/' + id, school);
   }
-
-
 }

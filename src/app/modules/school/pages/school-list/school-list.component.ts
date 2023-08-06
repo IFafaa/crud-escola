@@ -24,7 +24,7 @@ export class SchoolListComponent implements OnInit {
   statusList: ENUM_STATUS_LIST = ENUM_STATUS_LIST.IDLE;
 
   showFilter: boolean = false;
-  pageIndex: number = 0
+  pageIndex: number = 0;
   constructor(
     private readonly _router: Router,
     private readonly _matDialog: MatDialog,
@@ -84,12 +84,11 @@ export class SchoolListComponent implements OnInit {
         .pipe(finalize(() => this.getSchools()))
         .subscribe({
           next: (res) => {
-            this._toastr.success("Escola deletada com sucesso!")
+            this._toastr.success('Escola deletada com sucesso!');
           },
         });
     });
   }
-
 
   editSchool(id: number): void {
     this._router.navigate(['/escolas', id, ENUM_MODE_TYPE.EDIT]);

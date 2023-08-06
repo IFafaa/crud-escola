@@ -1,4 +1,4 @@
-export interface ISelect{
-  name: string,
-  id: number
+export interface ISelect {
+  name: string;
+  id: number;
 }

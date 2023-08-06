@@ -1,5 +1,4 @@
-import { ValidatorFn, AbstractControl } from "@angular/forms";
-
+import { ValidatorFn, AbstractControl } from '@angular/forms';
 
 export function cpfCnpjValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -9,15 +8,13 @@ export function cpfCnpjValidator(): ValidatorFn {
       return null;
     }
 
-    if(value.length < 12){
-      return !isValidCPF(value) ? {'cpfCnpj': true} : null;
-    }else{
-      return !isValidCNPJ(value) ?{'cpfCnpj': true} : null;
+    if (value.length < 12) {
+      return !isValidCPF(value) ? { cpfCnpj: true } : null;
+    } else {
+      return !isValidCNPJ(value) ? { cpfCnpj: true } : null;
     }
-
-  }
+  };
 }
-
 
 function isValidCPF(cpf: string) {
   if (typeof cpf !== 'string') return false;

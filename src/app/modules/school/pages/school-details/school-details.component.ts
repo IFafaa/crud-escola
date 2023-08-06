@@ -80,7 +80,12 @@ export class SchoolDetailsComponent implements OnInit {
       ],
       directorName: [
         { value: null, disabled: this.isReadOnlyMode },
-        [Validators.required, Validators.pattern(/^(?=.*[a-zA-ZÀ-ÖØ-öø-ÿ])(?=.*\s)[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/)],
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*[a-zA-ZÀ-ÖØ-öø-ÿ])(?=.*\s)[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/
+          ),
+        ],
       ],
       location: this._fb.group({
         cep: [

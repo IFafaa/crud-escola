@@ -9,17 +9,14 @@ import { CepService } from 'src/app/core/services/cep.service';
   styleUrls: ['./school-details-address.component.scss'],
 })
 export class SchoolDetailsAddressComponent implements OnInit {
-  @Input() form!: FormGroup
+  @Input() form!: FormGroup;
   @Input() isReadOnlyMode!: boolean;
   @Input() isEditMode!: boolean;
 
-
-  constructor(
-    private readonly _cepService: CepService
-    ) {}
+  constructor(private readonly _cepService: CepService) {}
 
   ngOnInit(): void {
-    this.getCep(this.form.get("cep")?.value)
+    this.getCep(this.form.get('cep')?.value);
   }
 
   getCep(cep: string): void {
@@ -33,19 +30,17 @@ export class SchoolDetailsAddressComponent implements OnInit {
           control?.setErrors(error);
           return;
         }
-        this.setLocation(res)
+        this.setLocation(res);
       },
     });
   }
 
-  setLocation(location: any): void{
+  setLocation(location: any): void {
     this.form.patchValue({
       street: location.logradouro,
       neighborhood: location.bairro,
       city: location.localidade,
       state: location.uf,
     });
-    console.log('form',this.form.value);
-
   }
 }

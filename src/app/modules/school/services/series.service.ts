@@ -5,11 +5,10 @@ import { ISerie } from '../models/serie.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SeriesService {
-
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   getSeries(idTypeTeaching: number): Observable<ISerie[]> {
     return this.http.get<ISerie[]>(environment.apiUrl + 'series', {

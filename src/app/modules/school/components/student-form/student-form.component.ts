@@ -36,8 +36,6 @@ export class StudentFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data);
-
     this.createForm();
     this.getStudent();
   }

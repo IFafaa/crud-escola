@@ -29,8 +29,7 @@ import { CustomPaginationIntl } from './shared/config/custom.paginator.intl';
     HeaderComponent,
     MatSelectModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
-
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     {

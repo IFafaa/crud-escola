@@ -9,31 +9,42 @@
       <div class="col-12 mb-3">
         <div class="card-default p-3">
           <app-class-details-form
-          *ngIf="school && class"
-          [school]="school"
-          [form]="classForm"></app-class-details-form>
+            *ngIf="school && class"
+            [school]="school"
+            [form]="classForm"
+          ></app-class-details-form>
         </div>
       </div>
       <div class="col-12 mb-3" *ngIf="isEditMode">
         <div class="d-flex justify-content-end">
-          <default-button value="Salvar" icon="add" type="secondary" (clickEvent)="saveClass()" [disabled]="!classForm.dirty || classForm.invalid"></default-button>
+          <default-button
+            value="Salvar"
+            icon="add"
+            type="secondary"
+            (clickEvent)="saveClass()"
+            [disabled]="!classForm.dirty || classForm.invalid"
+          ></default-button>
         </div>
       </div>
       <div class="col-12 mb-3">
         <div>
           <app-class-details-students
-          *ngIf="class && school"
-          [isEditMode]="isEditMode"
-          [isReadOnlyMode]="isReadOnlyMode"
-          [classId]="class.id"
-          [schoolId]="school.id"
-          [class]="class"
+            *ngIf="class && school"
+            [isEditMode]="isEditMode"
+            [isReadOnlyMode]="isReadOnlyMode"
+            [classId]="class.id"
+            [schoolId]="school.id"
+            [class]="class"
           ></app-class-details-students>
         </div>
       </div>
-      <div class="col-12 mb-3" >
+      <div class="col-12 mb-3">
         <div class="d-flex">
-          <default-button value="Voltar" icon="arrow_back" (clickEvent)="back()"></default-button>
+          <default-button
+            value="Voltar"
+            icon="arrow_back"
+            (clickEvent)="back()"
+          ></default-button>
         </div>
       </div>
     </div>

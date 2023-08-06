@@ -29,7 +29,7 @@ export class ClassDetailsStudentsComponent implements OnInit {
   @Input() classId!: number;
   @Input() class!: IClass;
   students: IStudent[] = [];
-  pageIndex: number = 0
+  pageIndex: number = 0;
 
   showFilter: boolean = false;
 
@@ -108,10 +108,10 @@ export class ClassDetailsStudentsComponent implements OnInit {
       cpf: student.cpf,
     }));
 
-    const filename = Formatters.formatClassName(this.class.name, this.class.series);
+    const filename = Formatters.formatClassName(
+      this.class.name,
+      this.class.series
+    );
     Export.exportToCsv(array, filename);
   }
-
-
-
 }

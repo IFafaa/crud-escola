@@ -44,7 +44,6 @@ export class SchoolsFilterComponent implements OnInit {
     const filters: ISchool = Filters.adjustObjLike(
       Filters.removeNullUndefinedKeys({ ...this.form.value })
     );
-    console.log('filters', filters);
 
     this.searchCallback.emit(filters);
   }

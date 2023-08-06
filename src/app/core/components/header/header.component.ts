@@ -8,6 +8,4 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent {}

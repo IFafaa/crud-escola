@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="col-12 col-sm-6 col-lg-3">
-    <div >
+    <div>
       Turnos
       <ul>
         <li *ngFor="let type of form.get('typeOpeningHours')?.value">
@@ -66,9 +66,13 @@
       <mat-error *ngIf="form.get('cnpj')?.hasError('minlength')"
         >Digite um CNPJ válido</mat-error
       >
-      <mat-error *ngIf="form.get('cnpj')?.hasError('cpfCnpj') && !form.get('cnpj')?.hasError('minlength')"
-              >Digite um CNPJ válido</mat-error
-            >
+      <mat-error
+        *ngIf="
+          form.get('cnpj')?.hasError('cpfCnpj') &&
+          !form.get('cnpj')?.hasError('minlength')
+        "
+        >Digite um CNPJ válido</mat-error
+      >
     </mat-form-field>
   </div>
 </div>

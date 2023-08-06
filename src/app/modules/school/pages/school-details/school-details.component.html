@@ -38,7 +38,13 @@
       </div>
       <div class="col-12 mb-3" *ngIf="isEditMode">
         <div class="d-flex justify-content-end">
-          <default-button value="Salvar" icon="add" type="secondary" (clickEvent)="saveSchool()" [disabled]="!schoolForm.dirty"></default-button>
+          <default-button
+            value="Salvar"
+            icon="add"
+            type="secondary"
+            (clickEvent)="saveSchool()"
+            [disabled]="!schoolForm.dirty"
+          ></default-button>
         </div>
       </div>
       <div class="col-12 mb-3">
@@ -49,13 +55,17 @@
             [mode]="mode"
             [isEditMode]="isEditMode"
             [isReadOnlyMode]="isReadOnlyMode"
-            (changeClassCallback)="getStudents();getClasses()"
+            (changeClassCallback)="getStudents(); getClasses()"
           ></app-school-details-classes>
         </div>
       </div>
-      <div class="col-12 mb-3" >
+      <div class="col-12 mb-3">
         <div class="d-flex">
-          <default-button value="Voltar" icon="arrow_back" (clickEvent)="back()"></default-button>
+          <default-button
+            value="Voltar"
+            icon="arrow_back"
+            (clickEvent)="back()"
+          ></default-button>
         </div>
       </div>
     </div>

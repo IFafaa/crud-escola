@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToastrService {
-
   private readonly toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -13,32 +12,31 @@ export class ToastrService {
     timer: 2000,
     timerProgressBar: true,
     didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    },
+  });
 
+  constructor() {}
 
-  constructor() { }
-
-  error(message: string): void{
+  error(message: string): void {
     this.toast.fire({
       icon: 'error',
-      title: message
-    })
+      title: message,
+    });
   }
 
-  attention(message: string): void{
+  attention(message: string): void {
     this.toast.fire({
       icon: 'warning',
-      title: message
-    })
+      title: message,
+    });
   }
 
-  success(message: string): void{
+  success(message: string): void {
     this.toast.fire({
       icon: 'success',
-      title: message
-    })
+      title: message,
+    });
   }
 }
