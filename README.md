@@ -47,7 +47,13 @@ Após a conclusão da instalação das dependências, você pode iniciar o servi
 ng serve
 ```
 
-Em outro terminal para iniciar o servidor json-server(back-end - mockado) execute o seguinte comando:
+Em outro terminal para instalar o servidor json-server(back-end - mockado) execute o seguinte comando:
+
+```
+npm i json-server
+```
+
+Finalmente para iniciar o servidor json-server execute o seguinte comando:
 
 ```
 json-server --watch server.json
