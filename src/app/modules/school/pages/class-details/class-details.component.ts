@@ -16,6 +16,7 @@ import { ToastrService } from 'src/app/core/services/toastr.service';
   styleUrls: ['./class-details.component.scss'],
 })
 export class ClassDetailsComponent implements OnInit {
+  modeClass: ENUM_MODE_TYPE;
   mode: ENUM_MODE_TYPE;
   isReadOnlyMode: boolean;
   isEditMode: boolean;
@@ -37,13 +38,16 @@ export class ClassDetailsComponent implements OnInit {
     private readonly _fb: FormBuilder,
     private readonly _toastr: ToastrService
   ) {
-    this.mode = <ENUM_MODE_TYPE>(
+    this.modeClass = <ENUM_MODE_TYPE>(
       this._route.snapshot.paramMap.get('classMethod')
+    );
+    this.mode = <ENUM_MODE_TYPE>(
+      this._route.snapshot.paramMap.get('method')
     );
     this.classId = Number(this._route.snapshot.paramMap.get('classId'));
     this.schoolId = Number(this._route.snapshot.paramMap.get('id'));
-    this.isEditMode = this.mode == ENUM_MODE_TYPE.EDIT;
-    this.isReadOnlyMode = this.mode == ENUM_MODE_TYPE.VIEW;
+    this.isEditMode = this.modeClass == ENUM_MODE_TYPE.EDIT;
+    this.isReadOnlyMode = this.modeClass == ENUM_MODE_TYPE.VIEW;
   }
 
   ngOnInit(): void {
@@ -110,6 +114,6 @@ export class ClassDetailsComponent implements OnInit {
   }
 
   back(): void {
-    this._router.navigate(['/escolas', this.schoolId, ENUM_MODE_TYPE.EDIT]);
+    this._router.navigate(['/escolas', this.schoolId, this.mode]);
   }
 }

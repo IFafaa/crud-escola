@@ -1,13 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ConfirmDialogService } from './confirm-dialog.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ConfirmDialogService', () => {
   let service: ConfirmDialogService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({imports: [HttpClientTestingModule]});
+    TestBed.configureTestingModule({});
     service = TestBed.inject(ConfirmDialogService);
   });
 

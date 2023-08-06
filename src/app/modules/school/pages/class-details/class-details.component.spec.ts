@@ -116,6 +116,6 @@ describe('ClassDetailsComponent', () => {
     const spy = spyOn(router, 'navigate')
     component.back()
     fixture.detectChanges()
-    expect(spy).toHaveBeenCalledWith(['/escolas', component.schoolId, ENUM_MODE_TYPE.EDIT])
+    expect(spy).toHaveBeenCalledWith(['/escolas', component.schoolId, component.mode ])
   })
 });

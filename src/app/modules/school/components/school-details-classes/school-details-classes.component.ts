@@ -98,6 +98,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
     this._router.navigate([
       '/escolas/classe',
       this.school.id,
+      this.mode,
       id,
       ENUM_MODE_TYPE.VIEW,
     ]);
@@ -107,6 +108,7 @@ export class SchoolDetailsClassesComponent implements OnInit {
     this._router.navigate([
       '/escolas/classe',
       this.school.id,
+      this.mode,
       id,
       ENUM_MODE_TYPE.EDIT,
     ]);

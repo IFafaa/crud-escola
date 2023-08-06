@@ -124,6 +124,7 @@ describe('SchoolDetailsClassesComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith([
       '/escolas/classe',
       456,
+      component.mode,
       classId,
       ENUM_MODE_TYPE.VIEW,
     ]);
@@ -136,6 +137,7 @@ describe('SchoolDetailsClassesComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith([
       '/escolas/classe',
       456,
+      component.mode,
       classId,
       ENUM_MODE_TYPE.EDIT,
     ]);

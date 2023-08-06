@@ -37,7 +37,7 @@ const routes: Routes = [
     component: SchoolDetailsComponent,
   },
   {
-    path: 'classe/:id/:classId/:classMethod',
+    path: 'classe/:id/:method/:classId/:classMethod',
     component: ClassDetailsComponent,
   },
 ];

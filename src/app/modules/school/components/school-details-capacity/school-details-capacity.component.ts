@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-school-details-capacity',
@@ -8,4 +8,14 @@ import { FormGroup } from '@angular/forms';
 })
 export class SchoolDetailsCapacityComponent {
   @Input() qntForm!: FormGroup;
+
+  constructor(){
+    //TO TEST
+    if(!this.qntForm){
+      this.qntForm = new FormGroup({
+        classes: new FormControl(''),
+        students: new FormControl(''),
+      });
+    }
+  }
 }

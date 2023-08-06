@@ -15,7 +15,7 @@
         2
       ],
       "cnpj": "01576476000138",
-      "directorName": "Washington Ferreira Silvano",
+      "directorName": "Washington Ferreira Silvanod",
       "location": {
         "cep": "77066012",
         "street": "Avenida Copacabana",
@@ -35,6 +35,14 @@
       "typeOpeningHours": 0,
       "idSchool": 1,
       "id": 1
+    },
+    {
+      "typeTeaching": 3,
+      "series": 13,
+      "name": "B",
+      "typeOpeningHours": 0,
+      "idSchool": 1,
+      "id": 2
     }
   ],
   "students": [
