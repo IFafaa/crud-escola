@@ -1,5 +1,5 @@
 <div class="row" [formGroup]="form">
-  <div class="col-3">
+  <div class="col-12 col-sm-6 col-md-3">
     <mat-form-field class="mb-2">
       <mat-label>Tipos de ensino</mat-label>
       <mat-select formControlName="typeTeaching" (selectionChange)="selectTeachingChange()">
@@ -12,7 +12,7 @@
       >
     </mat-form-field>
   </div>
-  <div class="col-3">
+  <div class="col-12 col-sm-6 col-md-3">
     <mat-form-field class="mb-2">
       <mat-label>Série</mat-label>
       <mat-select formControlName="series">
@@ -25,7 +25,7 @@
       >
     </mat-form-field>
   </div>
-  <div class="col-3">
+  <div class="col-12 col-sm-6 col-md-3">
     <mat-form-field class="mb-2">
       <mat-label>Nome (Letra)</mat-label>
       <input matInput formControlName="name" placeholder="ex: A" maxlength="1"/>
@@ -37,7 +37,7 @@
       >
     </mat-form-field>
   </div>
-  <div class="col-3">
+  <div class="col-12 col-sm-6 col-md-3">
     <mat-form-field class="mb-2">
       <mat-label>Turnos de funcionamento</mat-label>
       <mat-select formControlName="typeOpeningHours">

@@ -25,72 +25,74 @@
 <div *ngIf="showFilter" class="card-default p-3 mx-auto mt-2 row">
   <app-class-filter (searchCallback)="getClasses($event)"></app-class-filter>
 </div>
-
-<div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Tipo de Ensino</th>
-        <th>Turno</th>
-        <th class="text-center">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container
-        *ngIf="classes.length && statusList == ENUM_STATUS_LIST.IDLE"
-      >
-        <tr
-          *ngFor="let class of classes; let i = index"
-          [paginacao]="{ indice: i, pagina: pageIndex, limitePagina: 5 }"
-        >
-          <td>{{ formatClassName(class.name, class.series) }}</td>
-          <td>{{ formatTypeTeaching(class.typeTeaching) }}</td>
-          <td>{{ formatOpeningHours(class.typeOpeningHours) }}</td>
-          <td>
-            <div class="d-flex gap-2 justify-content-center">
-              <default-button
-                icon="visibility"
-                type="secondary"
-                (clickEvent)="viewClass(class.id)"
-              ></default-button>
-              <default-button
-                *ngIf="isEditMode"
-                icon="edit"
-                (clickEvent)="editClass(class.id)"
-              ></default-button>
-              <default-button
-                *ngIf="isEditMode"
-                icon="delete"
-                type="cancel"
-                (clickEvent)="deleteClass(class.id)"
-              ></default-button>
-            </div>
-          </td>
+<div class="card-default mx-auto mt-2">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo de Ensino</th>
+          <th>Turno</th>
+          <th class="text-center">Ações</th>
         </tr>
-      </ng-container>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngIf="classes.length && statusList == ENUM_STATUS_LIST.IDLE"
+        >
+          <tr
+            *ngFor="let class of classes; let i = index"
+            [paginacao]="{ indice: i, pagina: pageIndex, limitePagina: 5 }"
+          >
+            <td>{{ formatClassName(class.name, class.series) }}</td>
+            <td>{{ formatTypeTeaching(class.typeTeaching) }}</td>
+            <td>{{ formatOpeningHours(class.typeOpeningHours) }}</td>
+            <td>
+              <div class="d-flex gap-2 justify-content-center">
+                <default-button
+                  icon="visibility"
+                  type="secondary"
+                  (clickEvent)="viewClass(class.id)"
+                ></default-button>
+                <default-button
+                  *ngIf="isEditMode"
+                  icon="edit"
+                  (clickEvent)="editClass(class.id)"
+                ></default-button>
+                <default-button
+                  *ngIf="isEditMode"
+                  icon="delete"
+                  type="cancel"
+                  (clickEvent)="deleteClass(class.id)"
+                ></default-button>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
+      <div class="p-5 d-flex w-100 justify-content-center">
+        <span>Não foram encontrados registros</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
+      <div class="p-5 d-flex w-100 justify-content-center">
+        <span
+          >Houve um problema ao realizar a consulta, tente novamente mais
+          tarde</span
+        >
+      </div>
+    </ng-container>
+  </div>
+
   <div *ngIf="classes.length && statusList == ENUM_STATUS_LIST.IDLE">
     <mat-paginator
       [length]="classes.length"
       [pageSize]="5"
       (page)="pageIndex = $event.pageIndex"
-      [hidePageSize]="false"
+      [hidePageSize]="true"
     >
     </mat-paginator>
   </div>
-  <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
-    <div class="p-5 d-flex w-100 justify-content-center">
-      <span>Não foram encontrados registros</span>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
-    <div class="p-5 d-flex w-100 justify-content-center">
-      <span
-        >Houve um problema ao realizar a consulta, tente novamente mais
-        tarde</span
-      >
-    </div>
-  </ng-container>
 </div>

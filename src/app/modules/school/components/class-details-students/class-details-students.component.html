@@ -36,64 +36,67 @@
   ></app-student-filter>
 </div>
 
-<div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Idade</th>
-        <th>CPF</th>
-        <th *ngIf="isEditMode" class="text-center">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container
-        *ngIf="students.length && statusList == ENUM_STATUS_LIST.IDLE"
-      >
-        <tr
-          *ngFor="let student of students; let i = index"
-          [paginacao]="{ indice: i, pagina: pageIndex, limitePagina: 5 }"
-        >
-          <td>{{ student.name }}</td>
-          <td>{{ student.age }}</td>
-          <td>{{ student.cpf | mask : "000.000.000-00" }}</td>
-          <td *ngIf="isEditMode">
-            <div class="d-flex gap-2 justify-content-center">
-              <default-button
-                icon="edit"
-                (clickEvent)="createEditStudent(student.id)"
-              ></default-button>
-              <default-button
-                icon="delete"
-                type="cancel"
-                (clickEvent)="deleteStudent(student.id)"
-              ></default-button>
-            </div>
-          </td>
+<div class="card-default mx-auto mt-2">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>CPF</th>
+          <th *ngIf="isEditMode" class="text-center">Ações</th>
         </tr>
-      </ng-container>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngIf="students.length && statusList == ENUM_STATUS_LIST.IDLE"
+        >
+          <tr
+            *ngFor="let student of students; let i = index"
+            [paginacao]="{ indice: i, pagina: pageIndex, limitePagina: 5 }"
+          >
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.cpf | mask : "000.000.000-00" }}</td>
+            <td *ngIf="isEditMode">
+              <div class="d-flex gap-2 justify-content-center">
+                <default-button
+                  icon="edit"
+                  (clickEvent)="createEditStudent(student.id)"
+                ></default-button>
+                <default-button
+                  icon="delete"
+                  type="cancel"
+                  (clickEvent)="deleteStudent(student.id)"
+                ></default-button>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+    <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
+      <div class="p-5 d-flex w-100 justify-content-center">
+        <span>Não foram encontrados registros</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
+      <div class="p-5 d-flex w-100 justify-content-center">
+        <span
+          >Houve um problema ao realizar a consulta, tente novamente mais
+          tarde</span
+        >
+      </div>
+    </ng-container>
+  </div>
   <div *ngIf="students.length && statusList == ENUM_STATUS_LIST.IDLE">
     <mat-paginator
       [length]="students.length"
       [pageSize]="5"
       (page)="pageIndex = $event.pageIndex"
-      [hidePageSize]="false"
+      [hidePageSize]="true"
     >
     </mat-paginator>
   </div>
-  <ng-container *ngIf="statusList === ENUM_STATUS_LIST.NOTFOUND">
-    <div class="p-5 d-flex w-100 justify-content-center">
-      <span>Não foram encontrados registros</span>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="statusList === ENUM_STATUS_LIST.ERROR">
-    <div class="p-5 d-flex w-100 justify-content-center">
-      <span
-        >Houve um problema ao realizar a consulta, tente novamente mais
-        tarde</span
-      >
-    </div>
-  </ng-container>
 </div>
