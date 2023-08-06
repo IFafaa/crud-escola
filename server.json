@@ -55,11 +55,11 @@
       "id": 2
     },
     {
-      "name": "Lucas Santos",
+      "name": "Lucas Henrique",
       "age": "18",
       "cpf": "27805984698",
-      "idSchool": 1,
       "idClass": 1,
+      "idSchool": 1,
       "id": 3
     },
     {
@@ -421,6 +421,14 @@
       "idSchool": 1,
       "idClass": 1,
       "id": 39
+    },
+    {
+      "name": "Breno Eduardo Costa Moreira",
+      "age": "18",
+      "cpf": "13842081600",
+      "idClass": 1,
+      "idSchool": 1,
+      "id": 40
     }
   ],
   "typeTeaching": [
