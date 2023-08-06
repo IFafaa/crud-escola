@@ -3,7 +3,7 @@
     <h5>Estudantes</h5>
   </div>
   <div class="d-flex gap-2">
-    <div>
+    <div *ngIf="students.length">
       <default-button
         value=""
         icon="download"
