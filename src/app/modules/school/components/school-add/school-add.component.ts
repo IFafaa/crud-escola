@@ -107,6 +107,7 @@ export class SchoolAddComponent {
     this.form.get('location')?.get('number')?.disable();
     this.address = '';
     if (cep.length < 8) return;
+    this.form.get('location')?.get('number')?.enable();
     let control = this.form.get('location')?.get('cep');
     control?.setErrors(null);
     this._cepService.getCep(cep).subscribe({
