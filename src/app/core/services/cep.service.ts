@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CepService {
-  private apiUrl = 'http://viacep.com.br/ws';
+  private apiUrl = 'https://viacep.com.br/ws';
 
   constructor(private http: HttpClient) {}
 
