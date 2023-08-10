@@ -1,5 +1,4 @@
-import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,8 +11,9 @@ export class CepService {
 
   getCep(cep: string): Observable<any> {
     return new Observable((x) => {
+      console.log('via cep url: ',this.apiUrl);
       var request = new XMLHttpRequest();
-      request.open('get', `${this.apiUrl}/${cep}/json`, true);
+      request.open('get', `${this.apiUrl}/${cep}/json/`, true);
       request.send();
       request.onload = function () {
         var data = JSON.parse(this.response);
