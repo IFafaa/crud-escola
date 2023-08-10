@@ -8,10 +8,17 @@ import { Injectable } from '@angular/core';
 export class CepService {
   private apiUrl = 'https://viacep.com.br/ws';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getCep(cep: string): Observable<any> {
-    const url = `${this.apiUrl}/${cep}/json`;
-    return this.http.get(url);
+    return new Observable((x) => {
+      var request = new XMLHttpRequest();
+      request.open('get', `${this.apiUrl}/${cep}/json`, true);
+      request.send();
+      request.onload = function () {
+        var data = JSON.parse(this.response);
+        x.next(data);
+      };
+    });
   }
 }
